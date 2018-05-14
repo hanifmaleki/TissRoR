@@ -1,0 +1,10 @@
+<h1>Person#search</h1>
+<p>Find me in app/views/person/search.html.erb</p>
+
+<!--%= form_tag("/search", method: "get") do %-->
+<!--%= form_tag(controller: "person", action: "doInvoke") do %-->
+<%= form_tag(person_doInvoke_path, method: :get) do %>
+<%= label_tag(:expression, "Search for:") %>
+<%= text_field_tag(:expression) %>
+<%= submit_tag("Search") %>
+<% end %>

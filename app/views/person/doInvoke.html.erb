@@ -1,0 +1,28 @@
+<h2>Search Results</h2>
+<h3>Keyword is <%=@myVar%></h3>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Gender</th>
+    <th>Details</th>
+    <th>Favorites</th>
+  </tr>
+<% @list.each do |item| %>
+    <%
+      pref      = item["prefixTitle"]  || ""
+      post      = item["postfixTitle"] || ""
+      firstname = item["firstname"]    || ""
+      lastname  = item["lastname"]     || ""
+      fullname  = "#{pref} #{firstname} #{lastname} #{post}"
+      gender    = item["gender"]       || ""
+    %>
+    <tr>
+      <td><%=fullname%></td>
+      <td><%=gender%></td>
+      <td>Details</td>
+      <td>Favourites</td>
+    </tr>
+<% end %>
+
+</table>
