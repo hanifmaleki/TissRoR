@@ -1,0 +1,16 @@
+<h3> Details <%= params[:person_id] %> </h3>
+
+<% @person.each do |key, value| %>
+  <h4><%= key %>:</h4>
+  <% if value.is_a?(Hash) %>
+    <% value.each do |k, v| %>
+      <h5><%= k %>:</h5>
+      <%= raw(v).html_safe %>
+      <br>
+    <% end %>
+  <% else %>
+    <%= raw(value).html_safe %>
+  <% end %>
+  <br>
+<% end %>
+<%=link_to "Back to list", person_doInvoke_path %>

@@ -4,22 +4,32 @@ class PersonController < ApplicationController
   end
 
   def doInvoke
-    puts "Eshgh Joonam"
-    puts params
-    puts "Eshghe Khodam"
-    puts params[:expression]
-    @myVar = params[:expression]
-    expr = @myVar
+    @expression = params[:expression]
+    expr = @expression
     tu_rest_factory = TURestFactory.new
     tu_rest_factory_search_people = tu_rest_factory.search_people(expr)
-    puts tu_rest_factory_search_people
     response = JSON.parse tu_rest_factory_search_people.body
-    puts "======================================="
-    puts response
-    puts "*****************************************"
-    puts response["results"]
     @list = response["results"]
-    puts "///////////////////////////////////////////////"
+  end
+
+  def detail
+    id = params[:person_id]
+    if(id.empty?)
+      puts "EMpty"
+      #TODO fill it
+    else
+      puts "Not Empty"
+      tu_rest_factory = TURestFactory.new
+      response = tu_rest_factory.getPerson(id)
+
+      puts response.body
+      puts response.body.class
+      puts "=================================="
+      puts response.parsed_response
+      puts "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"
+      puts response.parsed_response["tuvienna"]["person"].class
+      @person = response.parsed_response["tuvienna"]["person"]
+    end
 
   end
 end
