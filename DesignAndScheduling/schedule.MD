@@ -32,6 +32,7 @@ April-May 2018 | Study Rails| 7 days
 
 ### Study Ruby and Ruby on Rails
 ### Prototyping
+In order to have better idea about designing the project and due to the fact that the author does not have much experience in *RoR*, a prototyping is being done and deployed in [*heroku* cloud platform](https://hanifprototype1.herokuapp.com/)
 ### Data Model
 The data model is available in [dataModel.MD](https://github.com/hanifmaleki/TissRoR/blob/master/DesignAndScheduling/schedule.MD)
 
