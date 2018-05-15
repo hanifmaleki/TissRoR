@@ -76,6 +76,7 @@ This model aim to maintain information about thesis.
 
 ## User
 Registered user information are maintained by *User* data model.
+
 | Field |
 |-------|
 | id |
@@ -86,6 +87,7 @@ Registered user information are maintained by *User* data model.
 
 ## Session
 Information about logged-in user is maintained by this mode.
+
 | Field |
 |-------|
 | id |
