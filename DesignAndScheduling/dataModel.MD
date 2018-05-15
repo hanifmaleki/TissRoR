@@ -1,7 +1,7 @@
 # Data Model
 This documents introduce the data model of the project. In principle, there exist 6 data models **Course**, **Person**, **Thesis**, **Project**, **User**, and **Session**. Here, each one is specified with fields.
 Since most of the fields are *String*, the fields are assumed to be string unless otherwise stated.
-##Course
+## Course
 This model maintain the course information
 
 | Field |
@@ -24,7 +24,7 @@ This model maintain the course information
 | language |
 
 
-##Person
+## Person
 *Person* model represents the information of person.
 
 | Field |
@@ -39,7 +39,7 @@ This model maintain the course information
 | consultation_hour_info |
 
 
-##Thesis
+## Thesis
 This model aim to maintain information about thesis.
 
 | Field |
@@ -54,7 +54,7 @@ This model aim to maintain information about thesis.
 | advisor(prefix +  name + family + postfix) |
 | facultyName |
 
-##Projects
+## Projects
 *Project* specifications are represented by this model.
 
 | Field |
@@ -74,7 +74,7 @@ This model aim to maintain information about thesis.
 | financier |
 | funding |
 
-##User
+## User
 Registered user information are maintained by *User* data model.
 | Field |
 |-------|
@@ -84,7 +84,7 @@ Registered user information are maintained by *User* data model.
 |family |
 |email |
 
-##Session
+## Session
 Information about logged-in user is maintained by this mode.
 | Field |
 |-------|
