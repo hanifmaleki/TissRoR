@@ -1,0 +1,23 @@
+<h2>Search Results</h2>
+<h3>Keyword is <%= yield(:keyword) %></h3>
+<%puts @controller.controller_name %>
+
+<% if @list && @list.length > 0 %>
+  <table>
+    <tr>
+      <th>Name</th>
+      <!--th>Gender</th-->
+      <th>Details</th>
+      <!--th>Favorites</th-->
+    </tr>
+    <% @list.each do |item| %>
+      <tr>
+        <td><%= item[:name] %></td>
+        <td><%= link_to "Details", {:controller => @controller.controller_name, :action => "detail", :id => item[:id]} %></td>
+      </tr>
+    <% end %>
+<% else %>
+  There is no item match with the search expression
+<% end %>
+</table>
+<%= link_to "Back_to_search", url_for(action: "search", controller: @controller.controller_name) %>

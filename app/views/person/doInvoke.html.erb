@@ -24,7 +24,7 @@
         <td><%= fullname %></td>
         <td><%= gender %></td>
         <td><%= link_to "Details", {:controller => "person", :action => "detail", :person_id => id }%></td>
-        <td><%=link_to  "Favorites", static_pages_login_path%></td>
+        <!--td><!--%=link_to  "Favorites", static_pages_login_path%></td-->
       </tr>
     <% end %>
 <% else %>
@@ -32,4 +32,3 @@
 <% end %>
 </table>
 <%=link_to "Back_to_search", person_search_path%>
-<%=link_to "Home", static_pages_home_path%>

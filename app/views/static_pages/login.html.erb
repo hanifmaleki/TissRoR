@@ -1,15 +1,17 @@
 <h1>Login</h1>
 <p>Find me in app/views/static_pages/login.html.erb</p>
 
-<%=form_tag(static_pages_home_path, method: :get) do%>
-  <%= label_tag(:username, "Username") %>
+<%=form_for(@user, url: static_pages_loggedin_path) do |f|%>
+  <%= f.label(:username) %>
   <br>
-  <%= text_field_tag(:username) %>
+  <%= f.text_field(:username) %>
   <br>
-  <%= label_tag(:password, "Password") %>
+  <!--%= label_tag(:password, "Password") %>
   <br>
-  <%= password_field_tag(:password) %>
-  <br>
+  <!--%= password_field_tag(:password) %-->
+  <!--br-->
   <%= submit_tag("Login") %>
 <%end%>
+
+<%=link_to("New User?", static_pages_login_path)%>
 

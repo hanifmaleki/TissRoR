@@ -1,0 +1,31 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  contractBegin: MyString
+  contractEnd: MyString
+  projectBegin: MyString
+  projectEnd: MyString
+  projectFrom: MyString
+  projectType: MyString
+  abstract: MyString
+  researchArea: MyString
+  institue: MyString
+  keywords: MyString
+  financier: MyString
+  funding: MyString
+
+two:
+  title: MyString
+  contractBegin: MyString
+  contractEnd: MyString
+  projectBegin: MyString
+  projectEnd: MyString
+  projectFrom: MyString
+  projectType: MyString
+  abstract: MyString
+  researchArea: MyString
+  institue: MyString
+  keywords: MyString
+  financier: MyString
+  funding: MyString

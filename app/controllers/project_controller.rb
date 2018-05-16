@@ -4,11 +4,16 @@ class ProjectController < ApplicationController
 
   def list
     @expression = params[:expression]
+    @controller = self
     tu_rest_factory = TURestFactory.new
     tu_rest_factory_search_people = tu_rest_factory.search_project(@expression)
-    puts tu_rest_factory_search_people
     response = JSON.parse tu_rest_factory_search_people.body
-    @list = response["results"]
+    results = response["results"]
+    @list =[]
+    results.each do |result|
+      item = {:name=>result["title"], :id=> result["id"]}
+      @list.push(item)
+    end
   end
 
   def detail

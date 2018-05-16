@@ -1,13 +1,18 @@
-<h1>Project list</h1>
-<p>Find me in app/views/thesis/list.html.erb</p>
+<%provide(:keyword, @expression)%>
+<!--%provide(:controller, @controller)%-->
+<%provide(:list, @list)%>s
 
-Search key: <%= @expression %>
-<br>
-<% if @list.length > 0 %>
-  <% @list.each do |l| %>
-    <%= l["title"] %>
-    <br>
-  <% end %>
-<% else %>
-  No results has been found
-<% end %>
+<%= render 'layouts/list'%>
+<!--h1>Project list</h1>
+<p>Find me in app/views/thesis/list.html.erb</p-->
+
+<!--Search key: <!--%= @expression %>
+<br-->
+<!--% if @list.length > 0 %-->
+  <!--% @list.each do |l| %-->
+    <!--%= l["title"] %-->
+    <!--br-->
+  <!--% end %-->
+<!--% else %-->
+  <!--No results has been found-->
+<!--% end %-->

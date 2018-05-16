@@ -1,0 +1,17 @@
+<h3> Details <%= params[:person_id] %> </h3>
+<header>
+  <%=link_to "Back to list", url_for(action: "list", controller: @controller.controller_name) %>
+Remove from favorite
+</header>
+
+<% @hash.each do |key, value| %>
+  <%puts key, value %>
+  <h4><%= key %>:</h4>
+  <%= value %>
+  <br>
+<% end %>
+
+<footer>
+Add to favorite
+  <%=link_to "Back to list", url_for(action: "list", controller: @controller.controller_name) %>
+</footer>

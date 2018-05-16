@@ -1,0 +1,7 @@
+<h1><%=yield(:title)%> search</h1>
+<%= form_tag(yield(:forwardPath), method: :get) do %>
+<!--%= form_tag(person_doInvoke_path, method: :get) do %-->
+  <%= label_tag(:expression, "Search for:") %>
+  <%= text_field_tag(:expression) %>
+  <%= submit_tag("Search") %>
+<% end %>
