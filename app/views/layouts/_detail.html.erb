@@ -1,7 +1,11 @@
-<h3> Details <%= params[:person_id] %> </h3>
+<h3> Details <%= yield(:id) %> </h3>
 <header>
   <%=link_to "Back to list", url_for(action: "list", controller: @controller.controller_name) %>
-Remove from favorite
+  <% if yield(:isFavourite) %>
+    <%= link_to "Add to favourite", url_for(action: "addFav", controller: @controller.controller_name) %>
+  <% else %>
+    <%= link_to "Remove from favourite", url_for(action: "removeFav", controller: @controller.controller_name) %>
+  <% end %>
 </header>
 
 <% @hash.each do |key, value| %>
@@ -12,6 +16,10 @@ Remove from favorite
 <% end %>
 
 <footer>
-Add to favorite
   <%=link_to "Back to list", url_for(action: "list", controller: @controller.controller_name) %>
+  <% if yield(:isFavourite) %>
+    <%=link_to "Add to favourite", url_for(action: "addFav", controller: @controller.controller_name, :id=>yield(:id), :name=>yield(:name))%>
+  <%else%>
+    <%=link_to "Remove from favourite", url_for(action: "removeFav", controller: @controller.controller_name)%>
+  <%end%>
 </footer>

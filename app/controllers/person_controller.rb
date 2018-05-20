@@ -17,8 +17,10 @@ class PersonController < ApplicationController
   end
 
   def detail
-    id = params[:person_id]
-    if(id.empty?)
+    #id = params[:person_id]
+    puts params
+    id = params[:id]
+    if(id.nil?)
       puts "EMpty"
       #TODO fill it
     else
@@ -32,21 +34,29 @@ class PersonController < ApplicationController
       puts response.parsed_response
       puts "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"
       puts response.parsed_response["tuvienna"]["person"].class
-      @person = response.parsed_response["tuvienna"]["person"]
-      @person_params=Hash.new
-      @person_params[:id]= @person["tiss_id"]
-      @person_params[:firstname]= @person["firstname"]
-      @person_params[:lastname]= @person["lastname"]
-      @person_params[:gender]= @person["gender"]
-      @person_params[:preceding_titles]= @person["preceding_titles"]
-      @person_params[:picture_uri]= @person["picture_uri"]
-      @person_params[:main_phone_number]= @person["main_phone_number"]
-      @person_params[:main_email]= @person["main_email"]
-      @person_params[:consultation_hour_info]= @person["consultation_hour_info"]
+      @project = response.parsed_response["tuvienna"]["person"]
+      @project_params=Hash.new
+      @project_params[:id]= @project["tiss_id"]
+      @project_params[:firstname]= @project["firstname"]
+      @project_params[:lastname]= @project["lastname"]
+      @project_params[:gender]= @project["gender"]
+      @project_params[:preceding_titles]= @project["preceding_titles"]
+      @project_params[:picture_uri]= @project["picture_uri"]
+      @project_params[:main_phone_number]= @project["main_phone_number"]
+      @project_params[:main_email]= @project["main_email"]
+      @project_params[:consultation_hour_info]= @project["consultation_hour_info"]
 
-      @hash = @person_params
+      @hash = @project_params
       @controller=self
     end
 
+  end
+
+  def addFav
+    redirect_to action: 'detail'
+  end
+
+  def removeFav
+    redirect_to action: 'detail'
   end
 end

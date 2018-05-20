@@ -34,4 +34,9 @@ class TURestFactory
     self.class.get(string)
   end
 
+  def getProject(id)
+    string = "/pdb/rest/project/v2/#{id}"
+    self.class.get(string)
+  end
+
 end

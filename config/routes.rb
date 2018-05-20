@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
+  get 'favourite/add'
+  get 'favourite/remove'
   get 'project/search'
   get 'project/list'
   get 'project/detail'
+  get 'project/addFav'
+  get 'project/removeFav'
   get 'thesis/search'
   get 'thesis/list'
   get 'thesis/detail'
@@ -18,6 +22,8 @@ Rails.application.routes.draw do
   get '/person/doInvoke', to: 'person#doInvoke'
   get '/person/list'
   get 'person/detail'
+  get 'person/addFav'
+  get 'person/removeFav'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
 end
