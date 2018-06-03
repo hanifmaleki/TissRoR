@@ -1,12 +1,5 @@
-<h1>Course#list</h1>
-Search key: <%=@expression%>
-<br>
-<%if @list.length>0 %>
-  <%@list.each do |l|%>
-    <%= l["title"] %>
-    <br>
-  <%end%>
-<%else%>
-No results has been found
-<%end%>
+<%provide(:keyword, @expression)%>
+<!--%provide(:controller, @controller)%-->
+<%provide(:list, @list)%>s
 
+<%= render 'layouts/list'%>

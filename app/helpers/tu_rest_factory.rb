@@ -39,4 +39,10 @@ class TURestFactory
     self.class.get(string)
   end
 
+  def getCourse(id)
+    string = "/course/#{id}"
+    puts string
+    self.class.get(string)
+  end
+
 end

@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
-  get 'favourite/add'
+  get 'favourite/toggle'
   get 'favourite/remove'
+  get 'favourite/add'
   get 'project/search'
   get 'project/list'
   get 'project/detail'

@@ -1,5 +1,7 @@
 <%provide :controller, @controller%>
-<%provide :isFavourite, false %>
+<% favourite_course_find_by = FavouriteCourse.find_by(user_id: @user[:id], item_id: @project_params[:id])%>
+<%provide :isFavourite, "#{favourite_course_find_by.nil?}" %>
+<%puts "eshghhhhhhhhhhhhh  #{favourite_course_find_by.nil?}"%>
 <%provide :id, @project_params[:id]%>
 <%provide :name, "#{@project_params[:name]}"%>
 <%provide :type, 'PROJECT' %>

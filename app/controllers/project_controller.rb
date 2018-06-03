@@ -26,8 +26,6 @@ class ProjectController < ApplicationController
       tu_rest_factory = TURestFactory.new
       response = tu_rest_factory.getProject(id)
 
-      puts response.parsed_response
-      puts "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"
       puts response.parsed_response["tuVienna"]["project"].class
       @project = response.parsed_response["tuVienna"]["project"]
       @project_params = Hash.new
@@ -46,10 +44,10 @@ class ProjectController < ApplicationController
       #@project_params[:keywords]= @project["keywords"]
       #@project_params[:funding]= @project["funding"]
       #@project_params[:keywords]= @project["keywords"]
-      puts "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"
       puts @project_params
       @hash = @project_params
       @controller = self
+      @user = current_user
     end
   end
 
@@ -60,7 +58,7 @@ class ProjectController < ApplicationController
     @favourite.item_title = params[:item_title]
     @favourite.item_type = "PROJECT"
     @favourite.save
-    redirect_to action: "detail"
+    redirect_to action: "detail", :id => params[:id]
   end
 
   def removeFav
