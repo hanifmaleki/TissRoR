@@ -1,7 +1,12 @@
-<h1>Project Search</h1>
+<!--h1>Project Search</h1-->
 
-<%= form_tag(project_list_path, method: :get) do %>
-  <%= label_tag(:expression, "Search for:") %>
-  <%= text_field_tag(:expression) %>
-  <%= submit_tag("Search") %>
-<% end %>
+<!--%= form_tag(project_list_path, method: :get) do %-->
+  <!--%= label_tag(:expression, "Search for:") %-->
+  <!--%= text_field_tag(:expression) %-->
+  <!--%= submit_tag("Search") %-->
+<!--% end %-->
+
+
+<% provide(:title, 'Project') %>
+<% provide(:forwardPath, person_doInvoke_path) %>
+<%= render 'layouts/search' %>

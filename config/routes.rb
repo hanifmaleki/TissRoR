@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   get 'favourite/toggle'
   get 'favourite/remove'
+  get 'favourite/show'
   get 'favourite/add'
   get 'project/search'
   get 'project/list'
@@ -20,11 +21,10 @@ Rails.application.routes.draw do
   get 'static_pages/home'
   root 'static_pages#login'
   get 'person/search'
-  get '/person/doInvoke', to: 'person#doInvoke'
+  #get '/person/doInvoke', to: 'person#doInvoke'
   get '/person/list'
   get 'person/detail'
-  get 'person/addFav'
-  get 'person/removeFav'
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
 end

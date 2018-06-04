@@ -1,5 +1,10 @@
-<h2>Search Results</h2>
-<h3>Keyword is <%= yield(:keyword) %></h3>
+<%if yield(:favourite)==""%>
+  <h2>Search Results</h2>
+  <h3>Keyword is <%= yield(:keyword) %></h3>
+<%else%>
+  <h2>Favourite <%=yield(favourite)%></h2>
+<%end%>
+
 <%puts @controller.controller_name %>
 
 <% if @list && @list.length > 0 %>

@@ -1,2 +1,7 @@
-<h1>Thesis#detail</h1>
-<p>Find me in app/views/thesis/detail.html.erb</p>
+<%provide :controller, @controller%>
+<% favourite_course_find_by = FavouriteCourse.find_by(user_id: @user[:id], item_id: @hash[:id])%>
+<%provide :isFavourite, "#{favourite_course_find_by.nil?}" %>
+<%provide :id, @hash[:id]%>
+<%provide :name, "#{@hash[:name]}"%>
+<%provide :type, 'THESIS' %>
+<%=render 'layouts/detail' %>

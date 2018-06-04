@@ -1,6 +1,6 @@
 <%provide :controller, @controller%>
 <%provide :isFavourite, false %>
-<%provide :id, @project_params[:id]%>
-<%provide :name, "#{@project_params[:name]} #{@project_params[:name]}"%>
+<%provide :id, @hash[:id]%>
+<%provide :name, "#{@hash[:name]} #{@hash[:name]}"%>
 <%provide :type, 'PERSON' %>
 <%=render 'layouts/detail' %>

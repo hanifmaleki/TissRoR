@@ -45,4 +45,9 @@ class TURestFactory
     self.class.get(string)
   end
 
+  def getThesis(id)
+    string = "/thesis/#{id}"
+    self.class.get(string)
+  end
+
 end

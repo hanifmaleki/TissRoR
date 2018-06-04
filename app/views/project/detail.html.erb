@@ -1,8 +1,8 @@
 <%provide :controller, @controller%>
-<% favourite_course_find_by = FavouriteCourse.find_by(user_id: @user[:id], item_id: @project_params[:id])%>
+<% favourite_course_find_by = FavouriteCourse.find_by(user_id: @user[:id], item_id: @hash[:id])%>
 <%provide :isFavourite, "#{favourite_course_find_by.nil?}" %>
 <%puts "eshghhhhhhhhhhhhh  #{favourite_course_find_by.nil?}"%>
-<%provide :id, @project_params[:id]%>
-<%provide :name, "#{@project_params[:name]}"%>
+<%provide :id, @hash[:id]%>
+<%provide :name, "#{@hash[:name]}"%>
 <%provide :type, 'PROJECT' %>
 <%=render 'layouts/detail' %>

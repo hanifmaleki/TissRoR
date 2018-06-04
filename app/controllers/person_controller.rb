@@ -3,17 +3,24 @@ class PersonController < ApplicationController
   def search
   end
 
-  def doInvoke
-    @expression = params[:expression]
-    expr = @expression
-    tu_rest_factory = TURestFactory.new
-    tu_rest_factory_search_people = tu_rest_factory.search_people(expr)
-    response = JSON.parse tu_rest_factory_search_people.body
-    @list = response["results"]
-  end
-
   def list
-    redirect_to action: 'doInvoke'
+    @expression = params[:expression]
+    @controller = self
+    tu_rest_factory = TURestFactory.new
+    tu_rest_factory_search_people = tu_rest_factory.search_people(@expression)
+    response = JSON.parse tu_rest_factory_search_people.body
+    @results = response["results"]
+    @list = []
+    results.each do |item|
+      pref = item["prefixTitle"] || ""
+      post = item["postfixTitle"] || ""
+      firstname = item["firstname"] || ""
+      lastname = item["lastname"] || ""
+      fullname = "#{pref} #{firstname} #{lastname} #{post}"
+
+      person = {:name => fullname, :id => item["id"]}
+      @list.push(person)
+    end
   end
 
   def detail
@@ -34,29 +41,22 @@ class PersonController < ApplicationController
       puts response.parsed_response
       puts "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"
       puts response.parsed_response["tuvienna"]["person"].class
-      @project = response.parsed_response["tuvienna"]["person"]
-      @project_params=Hash.new
-      @project_params[:id]= @project["tiss_id"]
-      @project_params[:firstname]= @project["firstname"]
-      @project_params[:lastname]= @project["lastname"]
-      @project_params[:gender]= @project["gender"]
-      @project_params[:preceding_titles]= @project["preceding_titles"]
-      @project_params[:picture_uri]= @project["picture_uri"]
-      @project_params[:main_phone_number]= @project["main_phone_number"]
-      @project_params[:main_email]= @project["main_email"]
-      @project_params[:consultation_hour_info]= @project["consultation_hour_info"]
+      @thesis = response.parsed_response["tuvienna"]["person"]
+      @hash=Hash.new
+      @hash[:id]= @thesis["tiss_id"]
+      @hash[:firstname]= @thesis["firstname"]
+      @hash[:lastname]= @thesis["lastname"]
+      @hash[:gender]= @thesis["gender"]
+      @hash[:preceding_titles]= @thesis["preceding_titles"]
+      @hash[:picture_uri]= @thesis["picture_uri"]
+      @hash[:main_phone_number]= @thesis["main_phone_number"]
+      @hash[:main_email]= @thesis["main_email"]
+      @hash[:consultation_hour_info]= @thesis["consultation_hour_info"]
 
-      @hash = @project_params
+      @hash = @hash
       @controller=self
     end
 
   end
 
-  def addFav
-    redirect_to action: 'detail'
-  end
-
-  def removeFav
-    redirect_to action: 'detail'
-  end
 end

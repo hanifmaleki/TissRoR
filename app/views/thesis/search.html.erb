@@ -1,6 +1,3 @@
-<h1>Thesis Search</h1>
-<%= form_tag(thesis_list_path, method: :get) do %>
-  <%= label_tag(:expression, "Search for:") %>
-  <%= text_field_tag(:expression) %>
-  <%= submit_tag("Search") %>
-<% end %>
+<% provide(:title, 'Thesis') %>
+<% provide(:forwardPath, thesis_list_path) %>
+<%= render 'layouts/search' %>

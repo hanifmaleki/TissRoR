@@ -27,41 +27,28 @@ class ProjectController < ApplicationController
       response = tu_rest_factory.getProject(id)
 
       puts response.parsed_response["tuVienna"]["project"].class
-      @project = response.parsed_response["tuVienna"]["project"]
-      @project_params = Hash.new
-      @project_params[:id] = @project["id"]
-      @project_params[:title] = @project["titleEn"]
-      @project_params[:contractBegin] = @project["contractBegin"]
-      @project_params[:contractEnd] = @project["contractEnd"]
-      @project_params[:projectBegin] = @project["projectBegin"]
-      @project_params[:projectEnd] = @project["projectEnd"]
-      @project_params[:projectForm] = @project["projectForm"]
-      @project_params[:projectType] = @project["projectType"]
-      @project_params[:abstract] = @project["abstractEn"]
+      @thesis = response.parsed_response["tuVienna"]["project"]
+      @hash = Hash.new
+      @hash[:id] = @thesis["id"]
+      @hash[:title] = @thesis["titleEn"]
+      @hash[:contractBegin] = @thesis["contractBegin"]
+      @hash[:contractEnd] = @thesis["contractEnd"]
+      @hash[:projectBegin] = @thesis["projectBegin"]
+      @hash[:projectEnd] = @thesis["projectEnd"]
+      @hash[:projectForm] = @thesis["projectForm"]
+      @hash[:projectType] = @thesis["projectType"]
+      @hash[:abstract] = @thesis["abstractEn"]
       #TODO correct
       #@project_params[:researchArea]= @project["researchAreas"]
       #@project_params[:institute]= @project["institute"]
       #@project_params[:keywords]= @project["keywords"]
       #@project_params[:funding]= @project["funding"]
       #@project_params[:keywords]= @project["keywords"]
-      puts @project_params
-      @hash = @project_params
+      puts @hash
+      @hash = @hash
       @controller = self
       @user = current_user
     end
   end
 
-  def addFav
-    @favourite = FavouriteCourse.new
-    @favourite.user_id = current_user[:id]
-    @favourite.item_id = params[:id]
-    @favourite.item_title = params[:item_title]
-    @favourite.item_type = "PROJECT"
-    @favourite.save
-    redirect_to action: "detail", :id => params[:id]
-  end
-
-  def removeFav
-
-  end
 end
