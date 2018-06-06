@@ -1,11 +1,12 @@
+<%puts yield(:favourite)%>
 <%if yield(:favourite)==""%>
   <h2>Search Results</h2>
   <h3>Keyword is <%= yield(:keyword) %></h3>
 <%else%>
-  <h2>Favourite <%=yield(favourite)%></h2>
+  <h2>Favourite <%=yield(:favourite)%></h2>
 <%end%>
 
-<%puts @controller.controller_name %>
+<!--%puts @controller.controller_name %-->
 
 <% if @list && @list.length > 0 %>
   <table>
@@ -18,11 +19,25 @@
     <% @list.each do |item| %>
       <tr>
         <td><%= item[:name] %></td>
-        <td><%= link_to "Details", {:controller => @controller.controller_name, :action => "detail", :id => item[:id]} %></td>
+        <td><%= link_to "Details", {:controller => @controller, :action => "detail", :id => item[:id]} %></td>
       </tr>
     <% end %>
 <% else %>
   There is no item match with the search expression
 <% end %>
 </table>
-<%= link_to "Back_to_search", url_for(action: "search", controller: @controller.controller_name) %>
+<div class="container">
+  <h2>Pagination</h2>
+  <p>The .disabled class indicates an unclickable link, and the .active class indicates the current page:</p>
+  <ul class="pagination">
+    <li><a href="#">«</a></li>
+    <li><a href="#">1</a></li>
+    <li><a href="#">2</a></li>
+    <li class="disabled"><a href="#">3</a></li>
+    <li><a href="#">4</a></li>
+    <li><a href="#">5</a></li>
+    <li class="active"><a href="#">6</a></li>
+    <li><a href="#">»</a></li>
+  </ul>
+</div>
+<%= link_to "Back_to_search", url_for(action: "search", controller: @controller) %>

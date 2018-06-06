@@ -50,4 +50,11 @@ class TURestFactory
     self.class.get(string)
   end
 
+  @@instance = TURestFactory.new
+
+  #def self.instance
+  #  return @@instance
+  #end
+
+  #private_class_method :new
 end

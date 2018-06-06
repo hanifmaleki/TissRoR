@@ -13,6 +13,7 @@
 //= require jquery3
 //= require jquery_ujs
 //= require activestorage
+//= require bootstrap-sprockets
 //= require_tree .
 
 

@@ -4,7 +4,7 @@ class ProjectController < ApplicationController
 
   def list
     @expression = params[:expression]
-    @controller = self
+    @controller = controller_name
     tu_rest_factory = TURestFactory.new
     tu_rest_factory_search_people = tu_rest_factory.search_project(@expression)
     response = JSON.parse tu_rest_factory_search_people.body
@@ -46,7 +46,7 @@ class ProjectController < ApplicationController
       #@project_params[:keywords]= @project["keywords"]
       puts @hash
       @hash = @hash
-      @controller = self
+      @controller = controller_name
       @user = current_user
     end
   end

@@ -5,7 +5,7 @@ class PersonController < ApplicationController
 
   def list
     @expression = params[:expression]
-    @controller = self
+    @controller = controller_name
     tu_rest_factory = TURestFactory.new
     tu_rest_factory_search_people = tu_rest_factory.search_people(@expression)
     response = JSON.parse tu_rest_factory_search_people.body
@@ -54,7 +54,7 @@ class PersonController < ApplicationController
       @hash[:consultation_hour_info]= @thesis["consultation_hour_info"]
 
       @hash = @hash
-      @controller=self
+      @controller=controller_name
     end
 
   end

@@ -4,7 +4,7 @@ class ThesisController < ApplicationController
 
   def list
     @expression = params[:expression]
-    @controller = self
+    @controller = controller_name
     tu_rest_factory = TURestFactory.new
     tu_rest_factory_search_people = tu_rest_factory.search_thesis(@expression)
     response = JSON.parse tu_rest_factory_search_people.body
@@ -44,8 +44,12 @@ class ThesisController < ApplicationController
       #todo complete it
       @hash[:advisor] = @thesis["advisor"]["familyName"]
 
-      @controller = self
+      @controller = controller_name
       @user = current_user
     end
+  end
+
+  def self.instance
+    self
   end
 end

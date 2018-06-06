@@ -1,19 +1,62 @@
-<!--%provide :username, @user[:username] %-->
-<h2>TissRoR</h2>
-<%=link_to "people", person_search_path%>
+<% provide :username, @user[:username] %>
 
-<%=link_to  "theses",thesis_search_path%>
+<!--div class="container">
 
-<%=link_to  "projects",project_search_path%>
+  <div class="text_center"-->
 
-<%=link_to  "courses",course_search_path%>
+<!--div class="container-fluid"-->
+<div class="jumbotron container-fluid">
+  <br>
+  <ul>
+    <li class="list-group-item">
+      <%= link_to "<span class=\"glyphicon glyphicon-search\"> People </span>".html_safe, person_search_path %>
+      <br>
+      <%= link_to "<span class=\"glyphicon glyphicon-heart\"> Favourite people</span>".html_safe, {controller: 'favourite', action: 'show', type: "PERSON"} %>
+    </li>
 
-<h4>Favourites</h4>
+    <li class="list-group-item">
+      <%= link_to "<span class=\"glyphicon glyphicon-search\"> Projects </span>".html_safe, project_search_path %>
+      <br>
+      <%= link_to "<span class=\"glyphicon glyphicon-heart\"> Favourite Projects </span>".html_safe, {controller: 'favourite', action: 'show', type: "PROJECT"} %>
 
-<%=link_to  "Favourite people",{controller: 'favourite', action: 'show', type: "PERSON"}%>
+    </li>
+    <li class="list-group-item">
+      <%= link_to "<span class=\"glyphicon glyphicon-search\"> Theses </span>".html_safe, thesis_search_path %>
+      <br>
+      <%= link_to "<span class=\"glyphicon glyphicon-heart\"> Favorite Theses </span>".html_safe, {controller: 'favourite', action: 'show', type: "THESIS"} %>
+    </li>
+    <li class="list-group-item">
+      <%= link_to "<span class=\"glyphicon glyphicon-search\"> Courses </span>".html_safe, course_search_path %>
+      <br>
+      <%= link_to "<span class=\"glyphicon glyphicon-heart\"> Favorite Courses </span>".html_safe, {controller: 'favourite', action: 'show', type: "COURSE"} %>
+    </li>
 
-<%=link_to  "Favourite theses",{controller: 'favourite', action: 'show', type: "THESIS"}%>
+  </ul>
+</div>
+<!--/div-->
+<!--/div>
+</div-->
 
-<%=link_to  "Favourite projects",{controller: 'favourite', action: 'show', type: "PROJECT"}%>
 
-<%=link_to  "Favourite courses",{controller: 'favourite', action: 'show', type: "COURSE"}%>
+
+
+
+
+<!--h2>TissRoR</h2-->
+<!--%=link_to "people", person_search_path%-->
+
+<!--%=link_to  "theses",thesis_search_path%-->
+
+<!--%=link_to  "projects",project_search_path%-->
+-
+<!--%=link_to  "courses",course_search_path%-->
+
+<!--h4>Favourites</h4-->
+
+<!--%=link_to  "Favourite people",{controller: 'favourite', action: 'show', type: "PERSON"}%-->
+
+<!--%=link_to  "Favourite theses",{controller: 'favourite', action: 'show', type: "THESIS"}%-->
+
+<!--%=link_to  "Favourite projects",{controller: 'favourite', action: 'show', type: "PROJECT"}%-->
+
+<!--%=link_to  "Favourite courses",{controller: 'favourite', action: 'show', type: "COURSE"}%-->
