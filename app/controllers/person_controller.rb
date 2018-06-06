@@ -9,7 +9,7 @@ class PersonController < ApplicationController
     tu_rest_factory = TURestFactory.new
     tu_rest_factory_search_people = tu_rest_factory.search_people(@expression)
     response = JSON.parse tu_rest_factory_search_people.body
-    @results = response["results"]
+    results = response["results"]
     @list = []
     results.each do |item|
       pref = item["prefixTitle"] || ""

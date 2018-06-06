@@ -1,3 +1,4 @@
+<div class="container">
 <%puts yield(:favourite)%>
 <%if yield(:favourite)==""%>
   <h2>Search Results</h2>
@@ -5,30 +6,34 @@
 <%else%>
   <h2>Favourite <%=yield(:favourite)%></h2>
 <%end%>
+</div>
 
-<!--%puts @controller.controller_name %-->
-
+<div class="container">
 <% if @list && @list.length > 0 %>
-  <table>
+  <table class="table table-condensed table-hover table-striped">
+    <thead>
     <tr>
       <th>Name</th>
       <!--th>Gender</th-->
       <th>Details</th>
       <!--th>Favorites</th-->
     </tr>
+    </thead>
+    <tbody>
     <% @list.each do |item| %>
       <tr>
         <td><%= item[:name] %></td>
         <td><%= link_to "Details", {:controller => @controller, :action => "detail", :id => item[:id]} %></td>
       </tr>
     <% end %>
+    </tbody>
 <% else %>
   There is no item match with the search expression
 <% end %>
 </table>
+</div>
+
 <div class="container">
-  <h2>Pagination</h2>
-  <p>The .disabled class indicates an unclickable link, and the .active class indicates the current page:</p>
   <ul class="pagination">
     <li><a href="#">«</a></li>
     <li><a href="#">1</a></li>
