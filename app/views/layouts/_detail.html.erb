@@ -1,19 +1,21 @@
 <h3> Details <%= yield(:id) %> </h3>
 <header>
-  <%=link_to "Back to list", :back%>
-  <% if yield(:isFavourite)=="true" %>
-    <%= link_to "Add to favourite", {:controller => 'favourite', :action => "add", :type => yield(:type), :id =>yield(:id), :item_title => @hash[:title]}%>
+  <%= link_to "Back to list", :back %>
+  <% if yield(:isFavourite) == "true" %>
+    <%= link_to "Add to favourite", {:controller => 'favourite', :action => "add", :type => yield(:type), :id => yield(:id), :item_title => @hash[:title]} %>
   <% else %>
-    <%= link_to "Remove from favourite", {:controller => 'favourite', :action => "remove", :type => yield(:type), :id =>yield(:id), :item_title => @hash[:title]}%>
+    <%= link_to "Remove from favourite", {:controller => 'favourite', :action => "remove", :type => yield(:type), :id => yield(:id), :item_title => @hash[:title]} %>
   <% end %>
 
 
 </header>
 
-<% @hash.each do |key, value| %>
-  <dt><%= key %>:</dt>
-  <dd><%= value %></dd>
-  <br>
+<% if yield(:filled).nil? %>
+  <% @hash.each do |key, value| %>
+    <dt><%= key %>:</dt>
+    <dd><%= value %></dd>
+    <br>
+  <% end %>
 <% end %>
 
 <footer>

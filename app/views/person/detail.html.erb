@@ -3,4 +3,23 @@
 <%provide :id, @hash[:id]%>
 <%provide :name, "#{@hash[:name]} #{@hash[:name]}"%>
 <%provide :type, 'PERSON' %>
+<%provide :filled, 'filled' %>
 <%=render 'layouts/detail' %>
+
+<div class="container">
+  <h3><%= "#{@hash[:preceding_titles]} #{@hash[:firstname]} #{@hash[:lastname]}"%></h3>
+
+  <%=image_tag @hash[:picture_uri], class:"img-fluid"%>
+  <dt>gender:</dt>
+  <dd><%= @hash[:gender] %></dd>
+
+  <dt>phone_number:</dt>
+  <dd><%= @hash[:main_phone_number] %></dd>
+
+  <dt>email:</dt>
+  <dd><%= @hash[:main_email] %></dd>
+
+  <dt>consultation_hour:</dt>
+  <dd><%= @hash[:consultation_hour_info] %></dd>
+
+</div>

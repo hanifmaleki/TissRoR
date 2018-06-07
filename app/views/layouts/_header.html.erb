@@ -7,21 +7,22 @@
         <span class="icon-bar"></span>
       </button>
 
-      <%= link_to image_tag("logo-text-2.png", size: "150x48",alt: "Home", ), static_pages_home_path %></li
+      <%= link_to image_tag("logo-text-2.png", size: "150x48", alt: "Home",), static_pages_home_path %></li
 
       <!--p class="navbar-text navbar-center">Welcome <!--%= controller.current_user[:username] %-->!</p-->
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
-    <ul class="nav navbar-nav">
-      <li class="active">
-        <%= link_to "About", static_pages_login_path %></li>
-      <li>
-        <a href="#">Settings</a></li>
-      <li>
-        <a href="#">Contact us</a></li>
-      <li>
-        <a href="#"><span class="glyphicon glyphicon-log-out"></span> Logout <%= controller.current_user[:username] %></a></li>
-    </ul>
+      <ul class="nav navbar-nav">
+        <li class="active">
+          <%= link_to "About", static_pages_login_path %></li>
+        <li>
+          <a href="#">Settings</a></li>
+        <li>
+          <a href="#">Contact us</a></li>
+        <li>
+          <%= link_to "<span class=\"glyphicon glyphicon-log-out\"></span> Logout #{controller.current_user[:username]}".html_safe, static_pages_logout_path %>
+        </li>
+      </ul>
     </div>
   </div>
 </nav>
