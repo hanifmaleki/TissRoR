@@ -1,7 +1,3 @@
-<h1>Course Search</h1>
-
-<%= form_tag(course_list_path, method: :get) do %>
-  <%= label_tag(:expression, "Search for:") %>
-  <%= text_field_tag(:expression) %>
-  <%= submit_tag("Search") %>
-<% end %>
+<% provide(:title, 'Course Search') %>
+<% provide(:forwardPath, course_list_path) %>
+<%= render 'layouts/search' %>

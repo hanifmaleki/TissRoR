@@ -1,5 +1,6 @@
 <%provide :controller, @controller%>
-<%provide :isFavourite, false %>
+<% favourite_find_by = Favourite.find_by(user_id: @user[:id], item_id: @hash[:id])%>
+<%provide :isFavourite, "#{favourite_find_by.nil?}" %>
 <%provide :id, @hash[:id]%>
 <%provide :name, "#{@hash[:name]} #{@hash[:name]}"%>
 <%provide :type, 'PERSON' %>
@@ -8,8 +9,9 @@
 
 <div class="container">
   <h3><%= "#{@hash[:preceding_titles]} #{@hash[:firstname]} #{@hash[:lastname]}"%></h3>
-
-  <%=image_tag @hash[:picture_uri], class:"img-fluid"%>
+  <%if !@hash[:picture_uri].nil? && !@hash[:picture_uri].to_s.empty?%>
+    <%=image_tag @hash[:picture_uri], class:"img-fluid"%>
+  <%end%>
   <dt>gender:</dt>
   <dd><%= @hash[:gender] %></dd>
 

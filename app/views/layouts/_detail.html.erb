@@ -1,16 +1,31 @@
-<h3> Details <%= yield(:id) %> </h3>
 <header>
-  <%= link_to "Back to list", :back %>
-  <% if yield(:isFavourite) == "true" %>
-    <%= link_to "Add to favourite", {:controller => 'favourite', :action => "add", :type => yield(:type), :id => yield(:id), :item_title => @hash[:title]} %>
-  <% else %>
-    <%= link_to "Remove from favourite", {:controller => 'favourite', :action => "remove", :type => yield(:type), :id => yield(:id), :item_title => @hash[:title]} %>
-  <% end %>
-
-
+  <div class="container-fluid p-3 mb-2 bg-primary text-white">
+    <!--p class="navbar-text navbar-center"><h4>Welcome <!--%= controller.current_user[:username] %></h4></p-->
+    <br>
+    <div class="row vertical-align">
+      <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
+        <%= link_to "<h4><span class=\"glyphicon glyphicon-hand-left\"></span></h4>".html_safe, :back, style: 'color: white' %>
+      </div>
+      <div class="col-xs-7 col-sm-7 col-md-9 col-lg-9">
+        <h4>Details <%= yield(:id) %></h4>
+      </div>
+      <div class="col-xs-4 col-sm-4 col-md-2 col-lg-2">
+        <% if yield(:isFavourite) == "true" %>
+          <%= link_to "<h4><span class=\"glyphicon glyphicon-plus\"></span>Favourites</h4>".html_safe,
+                      {:controller => 'favourite', :action => "add", :type => yield(:type),
+                       :id => yield(:id), :item_title => @hash[:title]},style: 'color: white' %>
+        <% else %>
+          <%= link_to "<h4><span class=\"glyphicon glyphicon-minus\"></span>Favourites</h4>".html_safe,
+                      {:controller => 'favourite', :action => "remove", :type => yield(:type),
+                       :id => yield(:id), :item_title => @hash[:title]},style: 'color: white' %>
+        <% end %>
+      </div>
+    </div>
+    <br>
+  </div>
 </header>
 
-<% if yield(:filled).nil? %>
+<% if yield(:filled).nil? || yield(:filled).to_s.empty?%>
   <% @hash.each do |key, value| %>
     <dt><%= key %>:</dt>
     <dd><%= value %></dd>

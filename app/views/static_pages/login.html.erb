@@ -20,8 +20,19 @@
   </div>
 </div>
 <br><br><br><br>
-<div class="container">
-  <!--h2>Login</h2-->
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+<!--Adding Menu bar-->
+<ul class="nav nav-pills">
+  <li class="active"><a data-toggle="pill" href="#login">Login</a></li>
+  <li><a data-toggle="pill" href="#signup">Signup</a></li>
+  <li><a data-toggle="pill" href="#about">About</a></li>
+</ul>
+
+
+<div class="tab-content">
+<div id="login" class="tab-pane fade in active" style="border:3px solid #337ab7;padding: 35px;">
   <%= form_for(@user, url: static_pages_loggedin_path) do |f| %>
     <div class="form-group">
       <%= f.label(:username) %>
@@ -34,13 +45,37 @@
 
     <%= submit_tag "Login", class: "btn btn-primary btn-md" %>
   <% end %>
-
+  <!--%= link_to "New User?", static_pages_signup_path, class:"btn btn-md" %-->
 </div>
-<br>
-<div class="container">
-  <!--div class="alert alert-info"-->
-    <%= link_to "New User?", static_pages_signup_path, class:"btn btn-md" %>
-  <!--/div-->
+
+<div id="signup" class="tab-pane fade" style="border:3px solid #337ab7;padding: 35px;">
+
+      <%= form_for(@user, url: static_pages_loggedin_url) do |f| %>
+        <!--%= render 'shared/error_messages' %-->
+
+        <%= f.label :name %>
+        <%= f.text_field :name, class: 'form-control' %>
+
+        <%= f.label :email %>
+        <%= f.email_field :email, class: 'form-control' %>
+
+        <%= f.label :password %>
+        <%= f.password_field :password, class: 'form-control' %>
+
+        <%= f.label :password_confirmation, "Confirmation" %>
+        <%= f.password_field :password_confirmation, class: 'form-control' %>
+
+        <%= f.submit "Create my account", class: "btn btn-primary" %>
+      <% end %>
+</div>
+
+<div id="about" class="tab-pane fade" style="border:3px solid #337ab7;padding: 35px;">
+  This is a user friendly tool for searching in Tiss educational portal of the Tecgnichal University of Vienna.
+  <br>
+  In order to benefit from this UI, it is necessray that Registr/Login.
+</div>
+</div>
+  </div>
 </div>
 </body>
 </html>

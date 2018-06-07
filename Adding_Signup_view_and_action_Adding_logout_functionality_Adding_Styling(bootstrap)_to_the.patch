@@ -1,0 +1,249 @@
+Index: app/controllers/static_pages_controller.rb
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/controllers/static_pages_controller.rb	(revision 0d42f1325db5b656a91e606638a0089bf9a930f8)
++++ app/controllers/static_pages_controller.rb	(date 1528377842000)
+@@ -1,5 +1,9 @@
+ class StaticPagesController < ApplicationController
+   def home
++    if($current_user.nil?)
++      redirect_to action: 'login'
++    end
++    puts $current_user
+     @user = $current_user
+   end
+ 
+@@ -28,8 +32,20 @@
+     redirect_to action: 'home'
+   end
+ 
++  def signup
++    @user = User.new
++    render :layout => nil
++  end
++
++  def logout
++    $current_user = nil
++    puts "Set to nil #{$current_user}"
++    redirect_to action: "login"
++  end
++
+   def user_params
+     params.require(:user).permit(:name, :email, :password,
+                                  :username)
+   end
++
+ end
+Index: config/routes.rb
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- config/routes.rb	(revision 0d42f1325db5b656a91e606638a0089bf9a930f8)
++++ config/routes.rb	(date 1528375912000)
+@@ -19,7 +19,9 @@
+   get 'static_pages/about'
+   get 'static_pages/contact'
+   get 'static_pages/home'
+-  root 'static_pages#login'
++  get 'static_pages/signup'
++  get 'static_pages/logout'
++  root 'static_pages#home'
+   get 'person/search'
+   #get '/person/doInvoke', to: 'person#doInvoke'
+   get '/person/list'
+Index: app/views/person/detail.html.erb
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/views/person/detail.html.erb	(revision 0d42f1325db5b656a91e606638a0089bf9a930f8)
++++ app/views/person/detail.html.erb	(date 1528380496000)
+@@ -3,4 +3,23 @@
+ <%provide :id, @hash[:id]%>
+ <%provide :name, "#{@hash[:name]} #{@hash[:name]}"%>
+ <%provide :type, 'PERSON' %>
++<%provide :filled, 'filled' %>
+ <%=render 'layouts/detail' %>
++
++<div class="container">
++  <h3><%= "#{@hash[:preceding_titles]} #{@hash[:firstname]} #{@hash[:lastname]}"%></h3>
++
++  <%=image_tag @hash[:picture_uri], class:"img-fluid"%>
++  <dt>gender:</dt>
++  <dd><%= @hash[:gender] %></dd>
++
++  <dt>phone_number:</dt>
++  <dd><%= @hash[:main_phone_number] %></dd>
++
++  <dt>email:</dt>
++  <dd><%= @hash[:main_email] %></dd>
++
++  <dt>consultation_hour:</dt>
++  <dd><%= @hash[:consultation_hour_info] %></dd>
++
++</div>
+Index: app/views/static_pages/login.html.erb
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/views/static_pages/login.html.erb	(revision 0d42f1325db5b656a91e606638a0089bf9a930f8)
++++ app/views/static_pages/login.html.erb	(date 1528377717000)
+@@ -3,7 +3,7 @@
+ <head>
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+-  <title>Prototype1</title>
++  <title>TissRoR Login</title>
+   <%= csrf_meta_tags %>
+   <%= csp_meta_tag %>
+   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+@@ -12,11 +12,11 @@
+ <body>
+ <div class="container-fluid">
+   <div class="row vertical-align">
+-    <div class="col-xs-1"></div>
+-    <div class="col-xs-10">
++    <div class="col-xs-1 col-sm-2 col-md-5 col-lg-5"></div>
++    <div class="col-xs-10 col-sm-9 col-md-6 col-lg-6">
+       <%=image_tag "logo.png", class:"img-responsive"%> <!--size: '312x260',-->
+     </div>
+-    <div class="col-xs-1"></div>
++    <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1"></div>
+   </div>
+ </div>
+ <br><br><br><br>
+@@ -39,7 +39,7 @@
+ <br>
+ <div class="container">
+   <!--div class="alert alert-info"-->
+-    <%= link_to "New User?", static_pages_login_path, class:"btn btn-md" %>
++    <%= link_to "New User?", static_pages_signup_path, class:"btn btn-md" %>
+   <!--/div-->
+ </div>
+ </body>
+Index: app/views/layouts/_header.html.erb
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/views/layouts/_header.html.erb	(revision 0d42f1325db5b656a91e606638a0089bf9a930f8)
++++ app/views/layouts/_header.html.erb	(date 1528376212000)
+@@ -7,21 +7,22 @@
+         <span class="icon-bar"></span>
+       </button>
+ 
+-      <%= link_to image_tag("logo-text-2.png", size: "150x48",alt: "Home", ), static_pages_home_path %></li
++      <%= link_to image_tag("logo-text-2.png", size: "150x48", alt: "Home",), static_pages_home_path %></li
+ 
+       <!--p class="navbar-text navbar-center">Welcome <!--%= controller.current_user[:username] %-->!</p-->
+     </div>
+     <div class="collapse navbar-collapse" id="myNavbar">
+-    <ul class="nav navbar-nav">
+-      <li class="active">
+-        <%= link_to "About", static_pages_login_path %></li>
+-      <li>
+-        <a href="#">Settings</a></li>
+-      <li>
+-        <a href="#">Contact us</a></li>
+-      <li>
+-        <a href="#"><span class="glyphicon glyphicon-log-out"></span> Logout <%= controller.current_user[:username] %></a></li>
+-    </ul>
++      <ul class="nav navbar-nav">
++        <li class="active">
++          <%= link_to "About", static_pages_login_path %></li>
++        <li>
++          <a href="#">Settings</a></li>
++        <li>
++          <a href="#">Contact us</a></li>
++        <li>
++          <%= link_to "<span class=\"glyphicon glyphicon-log-out\"></span> Logout #{controller.current_user[:username]}".html_safe, static_pages_logout_path %>
++        </li>
++      </ul>
+     </div>
+   </div>
+ </nav>
+Index: app/views/layouts/_detail.html.erb
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/views/layouts/_detail.html.erb	(revision 0d42f1325db5b656a91e606638a0089bf9a930f8)
++++ app/views/layouts/_detail.html.erb	(date 1528378919000)
+@@ -1,19 +1,21 @@
+ <h3> Details <%= yield(:id) %> </h3>
+ <header>
+-  <%=link_to "Back to list", :back%>
+-  <% if yield(:isFavourite)=="true" %>
+-    <%= link_to "Add to favourite", {:controller => 'favourite', :action => "add", :type => yield(:type), :id =>yield(:id), :item_title => @hash[:title]}%>
++  <%= link_to "Back to list", :back %>
++  <% if yield(:isFavourite) == "true" %>
++    <%= link_to "Add to favourite", {:controller => 'favourite', :action => "add", :type => yield(:type), :id => yield(:id), :item_title => @hash[:title]} %>
+   <% else %>
+-    <%= link_to "Remove from favourite", {:controller => 'favourite', :action => "remove", :type => yield(:type), :id =>yield(:id), :item_title => @hash[:title]}%>
++    <%= link_to "Remove from favourite", {:controller => 'favourite', :action => "remove", :type => yield(:type), :id => yield(:id), :item_title => @hash[:title]} %>
+   <% end %>
+ 
+ 
+ </header>
+ 
+-<% @hash.each do |key, value| %>
+-  <dt><%= key %>:</dt>
+-  <dd><%= value %></dd>
+-  <br>
++<% if yield(:filled).nil? %>
++  <% @hash.each do |key, value| %>
++    <dt><%= key %>:</dt>
++    <dd><%= value %></dd>
++    <br>
++  <% end %>
+ <% end %>
+ 
+ <footer>
+Index: app/views/static_pages/signup.html.erb
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/views/static_pages/signup.html.erb	(date 1528378095000)
++++ app/views/static_pages/signup.html.erb	(date 1528378095000)
+@@ -0,0 +1,35 @@
++<!DOCTYPE html>
++<html>
++<head>
++  <meta charset="utf-8">
++  <meta name="viewport" content="width=device-width, initial-scale=1">
++  <title>TissRoR Signup</title>
++  <%= csrf_meta_tags %>
++  <%= csp_meta_tag %>
++  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
++  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
++</head>
++<body>
++<div class="row">
++  <div class="col-md-6 col-md-offset-3">
++<%= form_for(@user, url: static_pages_loggedin_url) do |f| %>
++  <!--%= render 'shared/error_messages' %-->
++
++  <%= f.label :name %>
++  <%= f.text_field :name, class: 'form-control' %>
++
++  <%= f.label :email %>
++  <%= f.email_field :email, class: 'form-control' %>
++
++  <%= f.label :password %>
++  <%= f.password_field :password, class: 'form-control' %>
++
++  <%= f.label :password_confirmation, "Confirmation" %>
++  <%= f.password_field :password_confirmation, class: 'form-control' %>
++
++  <%= f.submit "Create my account", class: "btn btn-primary" %>
++<% end %>
++</div>
++</div>
++</body>
++</html>
+\ No newline at end of file

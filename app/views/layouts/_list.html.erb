@@ -1,10 +1,11 @@
+<%provide :title, "Search Results"%>
+<%=render 'layouts/simple_second_nav'%>
 <div class="container">
 <%puts yield(:favourite)%>
 <%if yield(:favourite)==""%>
-  <h2>Search Results</h2>
-  <h3>Keyword is <%= yield(:keyword) %></h3>
+  <h4>Keyword is <%= yield(:keyword) %></h4>
 <%else%>
-  <h2>Favourite <%=yield(:favourite)%></h2>
+  <h4>Favourite <%=yield(:favourite)%></h4>
 <%end%>
 </div>
 

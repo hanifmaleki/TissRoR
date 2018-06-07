@@ -53,7 +53,7 @@ class PersonController < ApplicationController
       @hash[:main_email]= @thesis["main_email"]
       @hash[:consultation_hour_info]= @thesis["consultation_hour_info"]
 
-      @hash = @hash
+      @user = current_user
       @controller=controller_name
     end
 

@@ -1,11 +1,12 @@
-<div class="container">
+<%=render 'layouts/simple_second_nav' %>
 
-<h1><%=yield(:title)%> Search</h1>
-<%= form_tag(yield(:forwardPath), method: :get) do %>
+<div class="container">
+  <br>
+  <%= form_tag(yield(:forwardPath), method: :get) do %>
     <div class="form-group">
-  <%= label_tag(:expression, "Search for:") %>
-  <%= text_field_tag(:expression) %>
+      <%= label_tag(:expression, "Search for:") %>
+      <%= text_field_tag :expression, '', class:'form-control' %>
     </div>
-  <%= submit_tag "Search", class: "btn btn-primary btn-md"%>
-<% end %>
+    <%= submit_tag "Search", class: "btn btn-primary btn-md" %>
+  <% end %>
 </div>
