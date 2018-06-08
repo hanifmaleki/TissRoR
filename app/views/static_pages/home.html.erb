@@ -1,62 +1,41 @@
 <% provide :username, @user[:username] %>
 
-<!--div class="container">
-
-  <div class="text_center"-->
-
-<!--div class="container-fluid"-->
-<div class="jumbotron container-fluid">
-  <br>
-  <ul>
-    <li class="list-group-item">
-      <%= link_to "<span class=\"glyphicon glyphicon-search\"> People </span>".html_safe, person_search_path %>
-      <br>
-      <%= link_to "<span class=\"glyphicon glyphicon-heart\"> Favourite people</span>".html_safe, {controller: 'favourite', action: 'show', type: "PERSON"} %>
-    </li>
-
-    <li class="list-group-item">
-      <%= link_to "<span class=\"glyphicon glyphicon-search\"> Projects </span>".html_safe, project_search_path %>
-      <br>
-      <%= link_to "<span class=\"glyphicon glyphicon-heart\"> Favourite Projects </span>".html_safe, {controller: 'favourite', action: 'show', type: "PROJECT"} %>
-
-    </li>
-    <li class="list-group-item">
-      <%= link_to "<span class=\"glyphicon glyphicon-search\"> Theses </span>".html_safe, thesis_search_path %>
-      <br>
-      <%= link_to "<span class=\"glyphicon glyphicon-heart\"> Favorite Theses </span>".html_safe, {controller: 'favourite', action: 'show', type: "THESIS"} %>
-    </li>
-    <li class="list-group-item">
-      <%= link_to "<span class=\"glyphicon glyphicon-search\"> Courses </span>".html_safe, course_search_path %>
-      <br>
-      <%= link_to "<span class=\"glyphicon glyphicon-heart\"> Favorite Courses </span>".html_safe, {controller: 'favourite', action: 'show', type: "COURSE"} %>
-    </li>
-
-  </ul>
+<br><br>
+<div class="container-fluid row">
+  <div class="col-xs-6 btn-group">
+    <button type="button" class="btn-link" data-toggle="dropdown" >
+      <%= image_tag "person.png", class: "img-thumbnail " %></span></button>
+    <ul class="dropdown-menu" role="menu">
+      <li><%= link_to "<span class=\"glyphicon glyphicon-search\"> Search </span>".html_safe, person_search_path %></li>
+      <li><%= link_to "<span class=\"glyphicon glyphicon-heart\"> Favourite</span>".html_safe, {controller: 'favourite', action: 'show', type: "PERSON"} %></li>
+    </ul>
+  </div>
+  <div class="col-xs-6 btn-group">
+    <button type="button" class="btn-link" data-toggle="dropdown">
+      <%= image_tag "project.png", class: "img-thumbnail" %></span></button>
+    <ul class="dropdown-menu" role="menu">
+      <li><%= link_to "<span class=\"glyphicon glyphicon-search\"> Search </span>".html_safe, project_search_path %></li>
+      <li><%= link_to "<span class=\"glyphicon glyphicon-heart\"> Favourite</span>".html_safe, {controller: 'favourite', action: 'show', type: "PROJECT"} %></li>
+    </ul>
+  </div>
 </div>
-<!--/div-->
-<!--/div>
-</div-->
 
+<div class="row vertical-align container-fluid">
+  <div class="col-xs-6 btn-group">
+    <button type="button" class="btn-link" data-toggle="dropdown">
+      <%= image_tag "thesis.png", class: "img-thumbnail" %></span></button>
+    <ul class="dropdown-menu" role="menu">
+      <li><%= link_to "<span class=\"glyphicon glyphicon-search\"> Search </span>".html_safe, thesis_search_path %></li>
+      <li><%= link_to "<span class=\"glyphicon glyphicon-heart\"> Favourite</span>".html_safe, {controller: 'favourite', action: 'show', type: "THESIS"} %></li>
+    </ul>
+  </div>
 
-
-
-
-
-<!--h2>TissRoR</h2-->
-<!--%=link_to "people", person_search_path%-->
-
-<!--%=link_to  "theses",thesis_search_path%-->
-
-<!--%=link_to  "projects",project_search_path%-->
--
-<!--%=link_to  "courses",course_search_path%-->
-
-<!--h4>Favourites</h4-->
-
-<!--%=link_to  "Favourite people",{controller: 'favourite', action: 'show', type: "PERSON"}%-->
-
-<!--%=link_to  "Favourite theses",{controller: 'favourite', action: 'show', type: "THESIS"}%-->
-
-<!--%=link_to  "Favourite projects",{controller: 'favourite', action: 'show', type: "PROJECT"}%-->
-
-<!--%=link_to  "Favourite courses",{controller: 'favourite', action: 'show', type: "COURSE"}%-->
+  <div class="col-xs-6 btn-group">
+    <button type="button" class="btn-link" data-toggle="dropdown">
+      <%= image_tag "course.png", class: "img-thumbnail" %></span></button>
+    <ul class="dropdown-menu" role="menu">
+      <li><%= link_to "<span class=\"glyphicon glyphicon-search\"> Search </span>".html_safe, course_search_path %></li>
+      <li><%= link_to "<span class=\"glyphicon glyphicon-heart\"> Favourite</span>".html_safe, {controller: 'favourite', action: 'show', type: "COURSE"} %></li>
+    </ul>
+  </div>
+</div>
