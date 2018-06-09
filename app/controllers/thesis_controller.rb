@@ -12,7 +12,7 @@ class ThesisController < ApplicationController
     puts results
     @list = []
     results.each do |result|
-      item = {:name => result["title"], :id => result["id"]}
+      item = {:title => result["title"], :id => result["id"]}
       @list.push(item)
     end
   end
@@ -20,36 +20,14 @@ class ThesisController < ApplicationController
   def detail
     id = params[:id]
     if (id.nil?)
-      #puts "EMpty"
+
       #TODO fill it
     else
-      #puts "Not Empty"
-      tu_rest_factory = TURestFactory.new
-      response = tu_rest_factory.getThesis(id)
-
-      #puts response.parsed_response["tuvienna"]["thesis"].class
-      @thesis = response.parsed_response["tuvienna"]["thesis"]
-      #puts "Just title", @thesis["title"]
-      #puts "English title", @thesis["title"]["en"]
-      @hash = Hash.new
-      @hash[:id] = id
-      @hash[:type] = @thesis["thesisType"]
-      @hash[:title] = @thesis["title"]["en"]
-      @hash[:institue] = @thesis["instituteCode"]
-      @hash[:institueName] = @thesis["instituteName"]["en"]
-      @hash[:facultyName] = @thesis["facultyCode"]
-      @hash[:facultyCode] = @thesis["facultyName"]["en"]
-      @hash[:keywords] = @thesis["keywords"]["en"]
-      @hash[:language] = @thesis["offeredLanguage"]
-      #todo complete it
-      @hash[:advisor] = @thesis["advisor"]["familyName"]
-
+      entity_extractor = EntityExtractor.new
+      @hash=entity_extractor.getThesis(id)
       @controller = controller_name
       @user = current_user
     end
   end
 
-  def self.instance
-    self
-  end
 end

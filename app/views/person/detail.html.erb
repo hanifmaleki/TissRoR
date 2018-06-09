@@ -10,10 +10,10 @@
 <div class="container">
   <h3><%= "#{@hash[:preceding_titles]} #{@hash[:firstname]} #{@hash[:lastname]}"%></h3>
   <%if !@hash[:picture_uri].nil? && !@hash[:picture_uri].to_s.empty?%>
-    <%=image_tag @hash[:picture_uri], class:"img-fluid"%>
+    <%=image_tag @hash[:picture_uri], class:"img-fluid img-responsive"%>
   <%end%>
   <dt>gender:</dt>
-  <dd><%= @hash[:gender] %></dd>
+  <dd><%= @hash[:gender]=='M'?'Male':'Female' %></dd>
 
   <dt>phone_number:</dt>
   <dd><%= @hash[:main_phone_number] %></dd>

@@ -23,32 +23,10 @@ class ProjectController < ApplicationController
       #TODO fill it
     else
       puts "Not Empty"
-      tu_rest_factory = TURestFactory.new
-      response = tu_rest_factory.getProject(id)
-
-      puts response.parsed_response["tuVienna"]["project"].class
-      @thesis = response.parsed_response["tuVienna"]["project"]
-      @hash = Hash.new
-      @hash[:id] = @thesis["id"]
-      @hash[:title] = @thesis["titleEn"]
-      @hash[:contractBegin] = @thesis["contractBegin"]
-      @hash[:contractEnd] = @thesis["contractEnd"]
-      @hash[:projectBegin] = @thesis["projectBegin"]
-      @hash[:projectEnd] = @thesis["projectEnd"]
-      @hash[:projectForm] = @thesis["projectForm"]
-      @hash[:projectType] = @thesis["projectType"]
-      @hash[:abstract] = @thesis["abstractEn"]
-      #TODO correct
-      #@project_params[:researchArea]= @project["researchAreas"]
-      #@project_params[:institute]= @project["institute"]
-      #@project_params[:keywords]= @project["keywords"]
-      #@project_params[:funding]= @project["funding"]
-      #@project_params[:keywords]= @project["keywords"]
-      puts @hash
-      @hash = @hash
+      entity_extractor = EntityExtractor.new
+      @hash = entity_extractor.getProject(id)
       @controller = controller_name
       @user = current_user
     end
   end
-
 end

@@ -1,7 +1,6 @@
 <%=render 'layouts/simple_second_nav' %>
 
-<div class="container">
-  <br>
+<div class="container" style="padding-top:84px;">
   <%= form_tag(yield(:forwardPath), method: :get) do %>
     <div class="form-group">
       <%= label_tag(:expression, "Search for:") %>

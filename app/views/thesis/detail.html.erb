@@ -4,4 +4,26 @@
 <%provide :id, @hash[:id]%>
 <%provide :name, "#{@hash[:name]}"%>
 <%provide :type, 'THESIS' %>
+<%provide :filled, 'filled' %>
 <%=render 'layouts/detail' %>
+
+<div class="container">
+  <h3><%= @hash[:title]%></h3>
+  <dt>Type:</dt>
+  <dd><%= @hash[:gender]=='M'?'Male':'Female' %></dd>
+
+  <dt>Institute:</dt>
+  <dd><%= "#{@hash[:institute]} #{@hash[:instituteName]}" %></dd>
+
+  <dt>Faculty:</dt>
+  <dd><%= "#{@hash[:facultyCode]} #{@hash[:facultyName]}" %></dd>
+
+  <dt>Keywords:</dt>
+  <dd><%= @hash[:keywords] %></dd>
+
+  <dt>Language:</dt>
+  <dd><%= @hash[:language] %></dd>
+
+  <dt>Advisor:</dt>
+  <dd><%= @hash[:advisor] %></dd>
+</div>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_08_163429) do
+ActiveRecord::Schema.define(version: 2018_06_09_153754) do
 
   create_table "courses", force: :cascade do |t|
     t.string "courseNumber"
@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 2018_06_08_163429) do
     t.string "courseType"
     t.string "title"
     t.string "objective"
-    t.string "trachingContent"
+    t.string "teachingContent"
     t.string "lectureNotes"
     t.string "examinationModalities"
     t.string "recommendation"
@@ -53,6 +53,7 @@ ActiveRecord::Schema.define(version: 2018_06_08_163429) do
     t.string "consultation_hour_info"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "title"
   end
 
   create_table "projects", force: :cascade do |t|
@@ -65,7 +66,7 @@ ActiveRecord::Schema.define(version: 2018_06_08_163429) do
     t.string "projectType"
     t.string "abstract"
     t.string "researchArea"
-    t.string "institue"
+    t.string "institute"
     t.string "keywords"
     t.string "financier"
     t.string "funding"
@@ -76,7 +77,7 @@ ActiveRecord::Schema.define(version: 2018_06_08_163429) do
   create_table "theses", force: :cascade do |t|
     t.string "type"
     t.string "title"
-    t.string "institue"
+    t.string "institute"
     t.string "institueName"
     t.string "facultyCode"
     t.string "keywords"
