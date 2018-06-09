@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   get 'course/detail'
   get 'static_pages/login'
   post 'static_pages/loggedin'
+  post 'static_pages/create'
   get 'static_pages/about'
   get 'static_pages/contact'
   get 'static_pages/home'

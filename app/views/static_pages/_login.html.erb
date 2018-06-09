@@ -1,0 +1,12 @@
+<%= form_for(@user, url: static_pages_loggedin_path) do |f| %>
+  <div class="form-group">
+    <%= f.label(:username) %>
+    <%= f.text_field :username, class: 'form-control', placeholder: "Enter username" %>
+  </div>
+  <div class="form-group">
+    <%= label_tag(:password, "Password") %>
+    <%= f.password_field :password, class: 'form-control', placeholder: "Enter password" %>
+  </div>
+
+  <%= submit_tag "Login", class: "btn btn-primary btn-md" %>
+<% end %>

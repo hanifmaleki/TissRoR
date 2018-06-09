@@ -1,0 +1,26 @@
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <!--Adding Menu bar-->
+    <ul class="nav nav-pills">
+      <li class="active"><a data-toggle="pill" href="#login">Login</a></li>
+      <li><a data-toggle="pill" href="#signup">Signup</a></li>
+      <li><a data-toggle="pill" href="#about">About</a></li>
+    </ul>
+
+
+    <div class="tab-content">
+      <div id="login" class="tab-pane fade in active" style="border:3px solid #337ab7;padding: 35px;">
+        <%= render 'static_pages/login' %>
+      </div>
+
+      <div id="signup" class="tab-pane fade" style="border:3px solid #337ab7;padding: 35px;">
+        <%= render 'static_pages/signup' %>
+
+      </div>
+
+      <div id="about" class="tab-pane fade" style="border:3px solid #337ab7;padding: 35px;">
+        <%= render 'static_pages/about' %>
+      </div>
+    </div>
+  </div>
+</div>

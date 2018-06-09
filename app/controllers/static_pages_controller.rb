@@ -1,4 +1,6 @@
 class StaticPagesController < ApplicationController
+  layout :resolve_layout
+
   def home
     if($current_user.nil?)
       redirect_to action: 'login'
@@ -9,7 +11,7 @@ class StaticPagesController < ApplicationController
 
   def login
     @user = User.new
-    render :layout => nil
+    #render :layout => 'welcome_layout'
   end
 
   def about
@@ -19,22 +21,32 @@ class StaticPagesController < ApplicationController
   end
 
   def loggedin
-    @user = User.find_by(username: user_params[:username])
-    if(@user)
-      puts "User Already exist"
+    @user = User.new(user_params)
+    user = User.find_by(username: @user[:username])
+    if(user && user.authenticate(user_params[:password]))
+      $current_user = user
+      redirect_to action: 'home'
     else
-      puts "Creating User"
-      @user = User.new(user_params)
-      @user.save
-      puts @user
+      puts "Passing user is #{@user}"
+      flash.now[:danger] = 'Invalid email/password combination'
+      render 'login'
     end
-    $current_user = @user
-    redirect_to action: 'home'
   end
 
   def signup
     @user = User.new
-    render :layout => nil
+  end
+
+  # POST /projects
+  # POST /projects.json
+  def create
+    @user = User.new(user_params)
+
+    if @user.save
+        redirect_to action: 'login'
+    else
+      render 'signup'
+    end
   end
 
   def logout
@@ -43,9 +55,18 @@ class StaticPagesController < ApplicationController
     redirect_to action: "login"
   end
 
+  private
+  # Never trust parameters from the scary internet, only allow the white list through.
   def user_params
-    params.require(:user).permit(:name, :email, :password,
-                                 :username)
+    params.require(:user).permit(:name, :email, :password,  :username, :password_confirmation)
   end
 
+  def resolve_layout
+    case action_name
+    when "login", "create", "signup", "loggedin"
+      "welcome_layout"
+    else
+      "application"
+    end
+  end
 end

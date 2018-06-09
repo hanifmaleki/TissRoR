@@ -2,7 +2,7 @@
 
 <br><br>
 <div class="container-fluid row">
-  <div class="col-xs-6 btn-group">
+  <div class="col-xs btn-group">
     <button type="button" class="btn-link" data-toggle="dropdown" >
       <%= image_tag "person.png", class: "img-thumbnail " %></span></button>
     <ul class="dropdown-menu" role="menu">
@@ -10,7 +10,7 @@
       <li><%= link_to "<span class=\"glyphicon glyphicon-heart\"> Favourite</span>".html_safe, {controller: 'favourite', action: 'show', type: "PERSON"} %></li>
     </ul>
   </div>
-  <div class="col-xs-6 btn-group">
+  <div class="col-xs btn-group">
     <button type="button" class="btn-link" data-toggle="dropdown">
       <%= image_tag "project.png", class: "img-thumbnail" %></span></button>
     <ul class="dropdown-menu" role="menu">
@@ -18,10 +18,10 @@
       <li><%= link_to "<span class=\"glyphicon glyphicon-heart\"> Favourite</span>".html_safe, {controller: 'favourite', action: 'show', type: "PROJECT"} %></li>
     </ul>
   </div>
-</div>
+<!--/div>
 
-<div class="row vertical-align container-fluid">
-  <div class="col-xs-6 btn-group">
+<div class="row vertical-align container-fluid"-->
+  <div class="col-xs btn-group">
     <button type="button" class="btn-link" data-toggle="dropdown">
       <%= image_tag "thesis.png", class: "img-thumbnail" %></span></button>
     <ul class="dropdown-menu" role="menu">
@@ -30,7 +30,7 @@
     </ul>
   </div>
 
-  <div class="col-xs-6 btn-group">
+  <div class="col-xs btn-group">
     <button type="button" class="btn-link" data-toggle="dropdown">
       <%= image_tag "course.png", class: "img-thumbnail" %></span></button>
     <ul class="dropdown-menu" role="menu">

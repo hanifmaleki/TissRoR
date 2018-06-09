@@ -1,9 +1,45 @@
-<h1>Course#detail</h1>
 <%provide :controller, @controller%>
 <% favourite_course_find_by = Favourite.find_by(user_id: @user[:id], item_id: @hash[:id])%>
 <%provide :isFavourite, "#{favourite_course_find_by.nil?}" %>
 <%provide :id, @hash[:id]%>
-<%puts "eshghhhhhhhhhhhhh  #{@hash[:id]}"%>
 <%provide :name, "#{@hash[:title]}"%>
 <%provide :type, 'COURSE' %>
+<%provide :filled, 'filled' %>
 <%=render 'layouts/detail' %>
+
+<div class="container">
+  <dt>Course Number:</dt>
+  <dd><%= @hash[:courseNumber] %></dd>
+
+  <dt>Semester:</dt>
+  <dd><%= @hash[:semesterCode] %></dd>
+
+  <h3><%= @hash[:title] %></h3>
+
+  <dt>Objective:</dt>
+  <dd><%= @hash[:objective].html_safe %></dd>
+
+  <dt>Teaching Content:</dt>
+  <dd><%= @hash[:trachingContent].html_safe %></dd>
+
+  <dt>Lecture Notes:</dt>
+  <dd><%= @hash[:lectureNotes].to_s.html_safe %></dd>
+
+  <dt>Examination:</dt>
+  <dd><%= @hash[:examinationModalities].to_s.html_safe %></dd>
+
+  <dt>Weekly Hours:</dt>
+  <dd><%= @hash[:weeklyHours].to_s.html_safe %></dd>
+
+  <dt>Lecturers:</dt>
+  <dd><%= @hash[:lecturers].to_s.html_safe %></dd>
+
+  <dt>Institue:</dt>
+  <dd><%= "#{@hash[:institue].to_s.html_safe} #{@hash[:institueName].to_s.html_safe}" %></dd>
+
+  <dt>Registration:</dt>
+  <dd><%= @hash[:registration]%></dd>
+
+  <dt>Language:</dt>
+  <dd><%= @hash[:language] %></dd>
+</div>
