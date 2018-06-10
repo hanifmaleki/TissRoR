@@ -3,9 +3,9 @@
 <div class="container"  style=" margin-top:48px;">
 <%puts yield(:favourite)%>
 <%if yield(:favourite)==""%>
-  <h4>Keyword is <%= yield(:keyword) %></h4>
+  <h5>Keyword is <%= yield(:keyword) %></h5>
 <%else%>
-  <h4>Favourite <%=yield(:favourite)%></h4>
+  <h5>Favourite <%=yield(:favourite)%></h5>
 <%end%>
 </div>
 

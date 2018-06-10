@@ -11,7 +11,7 @@ class ProjectController < ApplicationController
     results = response["results"]
     @list = []
     results.each do |result|
-      item = {:name => result["title"], :id => result["id"]}
+      item = {:title => result["title"], :id => result["id"]}
       @list.push(item)
     end
   end

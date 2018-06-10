@@ -1,8 +1,40 @@
 <%provide :controller, @controller%>
 <% favourite_course_find_by = Favourite.find_by(user_id: @user[:id], item_id: @hash[:id])%>
 <%provide :isFavourite, "#{favourite_course_find_by.nil?}" %>
-<%puts "eshghhhhhhhhhhhhh  #{favourite_course_find_by.nil?}"%>
 <%provide :id, @hash[:id]%>
 <%provide :name, "#{@hash[:name]}"%>
 <%provide :type, 'PROJECT' %>
+<%provide :filled, 'filled' %>
 <%=render 'layouts/detail' %>
+
+<div class="container">
+<h2><%=@hash[:title] %></h2>
+
+<dt>Project type:</dt>
+<dd><%= @hash[:projectType].to_s %></dd>
+
+<dt>Project From:</dt>
+<dd><%= @hash[:projectFrom].to_s %></dd>
+
+<dt>Contract Dates:</dt>
+<dd><%= "#{@hash[:contractBegin].to_s} to #{@hash[:contractEnd].to_s}" %></dd>
+
+<dt>Project Dates:</dt>
+<dd><%= "#{@hash[:projectBegin].to_s} to #{@hash[:projectEnd].to_s}" %></dd>
+
+<dt>Abstract:</dt>
+<dd><%= @hash[:abstract].html_safe %></dd>
+
+<dt>Research area:</dt>
+<dd><%= @hash[:researchArea].to_s%></dd>
+
+<dt>Institute:</dt>
+<dd><%= @hash[:institute].to_s %></dd>
+
+<dt>Keywords:</dt>
+<dd><%= @hash[:keywords].to_s %></dd>
+
+<dt>Financer:</dt>
+<dd><%= @hash[:financier] %></dd>
+
+</div>

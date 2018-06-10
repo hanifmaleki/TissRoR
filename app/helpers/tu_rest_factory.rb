@@ -4,10 +4,12 @@ class TURestFactory
   include HTTParty
   base_uri 'https://tiss.tuwien.ac.at/api'
   #https://tiss.tuwien.ac.at/api/person/v21/psuche
-  $countStr="&count=150"
+  #$countStr="&count=15"
+  #todo move to project configurable settings
+  @@pageSize=15
 
   def search_people(expr)
-    count = "&max_treffer=150"
+    count = "&max_treffer=30"
     string = "/person/v21/psuche?q=#{expr}#{count}"
     puts string
     self.class.get(string)
@@ -18,19 +20,20 @@ class TURestFactory
     self.class.get(string)
   end
 
-  def search_course(expr)
-    string = "/search/course/v1.0/quickSearch?searchterm=#{expr}#{$countStr}"
+  def search_course(expr, page=1)
+    string = "/search/course/v1.0/quickSearch?searchterm=#{expr}#{getPaginatoin(page)}"
     self.class.get(string)
   end
 
-  def search_thesis(expr)
-    string = "/search/thesis/v1.0/quickSearch?searchterm=#{expr}#{$countStr}"
+  def search_thesis(expr, page=1)
+    string = "/search/thesis/v1.0/quickSearch?searchterm=#{expr}#{getPaginatoin(page)}"
     puts string
     self.class.get(string)
   end
 
-  def search_project(expr)
-    string = "/search/projectFullSearch/v1.0/projects?searchterm=#{expr}#{$countStr}"
+  def search_project(expr, page=1)
+    string = "/search/projectFullSearch/v1.0/projects?searchterm=#{expr}#{getPaginatoin(page)}"
+    puts "string is #{string}"
     self.class.get(string)
   end
 
@@ -50,11 +53,12 @@ class TURestFactory
     self.class.get(string)
   end
 
-  @@instance = TURestFactory.new
+  #@@instance = TURestFactory.new
+  private
+  def getPaginatoin(page)
+    "&count=#{@@pageSize}&offset=#{(page-1)*@@pageSize}&locale=en"
+  end
 
-  #def self.instance
-  #  return @@instance
-  #end
 
-  #private_class_method :new
+
 end

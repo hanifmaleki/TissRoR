@@ -16,7 +16,7 @@ class CourseController < ApplicationController
       array = title.split()
       courseNumber = array[0].gsub(/[^0-9]/, '')
       semesterCode = array[array.length-1]
-      item = {:name => title, :id => "#{courseNumber}-#{semesterCode}"}
+      item = {:title => title, :id => "#{courseNumber}-#{semesterCode}"}
       @list.push(item)
     end
   end
