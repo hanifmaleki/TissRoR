@@ -2,9 +2,7 @@
 <% favourite_course_find_by = Favourite.find_by(user_id: @user[:id], item_id: @hash[:id])%>
 <%provide :isFavourite, "#{favourite_course_find_by.nil?}" %>
 <%provide :id, @hash[:id]%>
-<%provide :name, "#{@hash[:name]}"%>
 <%provide :type, 'PROJECT' %>
-<%provide :filled, 'filled' %>
 <%=render 'layouts/detail' %>
 
 <div class="container">
@@ -23,7 +21,7 @@
 <dd><%= "#{@hash[:projectBegin].to_s} to #{@hash[:projectEnd].to_s}" %></dd>
 
 <dt>Abstract:</dt>
-<dd><%= @hash[:abstract].html_safe %></dd>
+<dd><%= @hash[:abstract].to_s.html_safe %></dd>
 
 <dt>Research area:</dt>
 <dd><%= @hash[:researchArea].to_s%></dd>
@@ -35,6 +33,6 @@
 <dd><%= @hash[:keywords].to_s %></dd>
 
 <dt>Financer:</dt>
-<dd><%= @hash[:financier] %></dd>
+<dd><%= @hash[:financier].to_s %></dd>
 
 </div>

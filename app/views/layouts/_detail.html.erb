@@ -1,6 +1,5 @@
 <header>
-  <div class="container-fluid p-3 mb-2 bg-primary text-white">
-    <br>
+  <div class="container-fluid p-3 mb-2 bg-primary text-white navbar-fixed-top navbar2">
     <div class="row vertical-align">
       <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
         <%= link_to "<h4><span class=\"glyphicon glyphicon-hand-left\"></span></h4>".html_safe, :back, style: 'color: white' %>
@@ -20,17 +19,5 @@
         <% end %>
       </div>
     </div>
-    <br>
   </div>
 </header>
-
-<% if yield(:filled).nil? || yield(:filled).to_s.empty?%>
-  <% @hash.each do |key, value| %>
-    <dt><%= key %>:</dt>
-    <dd><%= value %></dd>
-    <br>
-  <% end %>
-<% end %>
-
-<footer>
-</footer>

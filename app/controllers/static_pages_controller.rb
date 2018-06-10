@@ -61,6 +61,7 @@ class StaticPagesController < ApplicationController
     params.require(:user).permit(:name, :email, :password,  :username, :password_confirmation)
   end
 
+  private
   def resolve_layout
     case action_name
     when "login", "create", "signup", "loggedin"

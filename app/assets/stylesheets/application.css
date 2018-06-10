@@ -53,3 +53,8 @@
     -ms-transform: translate(-50%, -50%);
     text-align: center;
 }
+
+.navbar2 {
+    padding:5px;
+    margin-top: 48px;
+}

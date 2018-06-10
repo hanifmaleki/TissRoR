@@ -5,7 +5,17 @@
   <!--div style="border: 1px solid black; width:400px"-->
   <!--div class="container-fluid row"-->
   <div class="col-xs container container2">
-    <%= image_tag "person.png", class: "img-thumbnail" %>
+    <%= image_tag "person2.png", class: "img-thumbnail" %>
+    <div class="overlay">
+      <ul class="list-group">
+        <li class="list-group-item"><%= link_to "<span class=\"glyphicon glyphicon-search\"> Search </span>".html_safe, person_search_path %></li>
+        <li class="list-group-item"><%= link_to "<span class=\"glyphicon glyphicon-heart\"> Favourite</span>".html_safe, {controller: 'favourite', action: 'show', type: "PERSON"} %></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="col-xs container container2">
+    <%= image_tag "project2.png", class: "img-thumbnail" %>
     <div class="overlay">
       <ul class="list-group">
         <li class="list-group-item"><%= link_to "<span class=\"glyphicon glyphicon-search\"> Search </span>".html_safe, project_search_path %></li>
@@ -15,17 +25,7 @@
   </div>
 
   <div class="col-xs container container2">
-    <%= image_tag "project.png", class: "img-thumbnail" %>
-    <div class="overlay">
-      <ul class="list-group">
-        <li class="list-group-item"><%= link_to "<span class=\"glyphicon glyphicon-search\"> Search </span>".html_safe, project_search_path %></li>
-        <li class="list-group-item"><%= link_to "<span class=\"glyphicon glyphicon-heart\"> Favourite</span>".html_safe, {controller: 'favourite', action: 'show', type: "PROJECT"} %></li>
-      </ul>
-    </div>
-  </div>
-
-  <div class="col-xs container container2">
-    <%= image_tag "thesis.png", class: "img-thumbnail" %>
+    <%= image_tag "thesis2.png", class: "img-thumbnail" %>
     <div class="overlay">
       <ul class="list-group">
         <li class="list-group-item"><%= link_to "<span class=\"glyphicon glyphicon-search\"> Search </span>".html_safe, thesis_search_path %></li>
@@ -35,7 +35,7 @@
   </div>
 
   <div class="col-xs container container2">
-    <%= image_tag "course.png", class: "img-thumbnail" %>
+    <%= image_tag "course2.png", class: "img-thumbnail" %>
     <div class="overlay">
       <ul class="list-group">
         <li class="list-group-item"><%= link_to "<span class=\"glyphicon glyphicon-search\"> Search </span>".html_safe, course_search_path %></li>
