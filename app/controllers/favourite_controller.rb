@@ -32,7 +32,7 @@ class FavouriteController < ApplicationController
     @list=[]
     #favourites = Favourite.where(user_id: current_user[:id], item_type: params[:type])
     Favourite.where(user_id: current_user[:id], item_type: params[:type]).find_each do |favourite|
-      item = {:name =>favourite.item_title, :id => favourite.item_id}
+      item = {:title =>favourite.item_title, :id => favourite.item_id}
       puts item
       @list.push(item)
     end

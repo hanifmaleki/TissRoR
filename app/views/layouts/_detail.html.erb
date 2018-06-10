@@ -13,7 +13,7 @@
                       {:controller => 'favourite', :action => "add", :type => yield(:type),
                        :id => yield(:id), :item_title => @hash[:title]},style: 'color: white' %>
         <% else %>
-          <%= link_to "#{image_tag("add.png", size:"36x36")}".html_safe,
+          <%= link_to "#{image_tag("remove.png", size:"36x36")}".html_safe,
                       {:controller => 'favourite', :action => "remove", :type => yield(:type),
                        :id => yield(:id), :item_title => @hash[:title]},style: 'color: white'%>
         <% end %>
