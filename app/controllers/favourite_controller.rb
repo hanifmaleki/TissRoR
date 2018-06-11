@@ -2,8 +2,6 @@ class FavouriteController < ApplicationController
   before_action :logged_in_user
 
   def add
-    puts 'inside add'
-    puts params
     @favourite = Favourite.new
     @favourite.user_id = current_user[:id]
     @favourite.item_id = params[:id]
@@ -18,8 +16,6 @@ class FavouriteController < ApplicationController
   end
 
   def remove
-    #puts 'inside remove'
-    #puts params
     @favourite = Favourite.find_by(user_id: current_user[:id], item_id: params[:id])
     @favourite.destroy
     respond_to do |format|
@@ -30,13 +26,19 @@ class FavouriteController < ApplicationController
 
   def show
     @type=params[:type]
-    @list=[]
-    #favourites = Favourite.where(user_id: current_user[:id], item_type: params[:type])
-    Favourite.where(user_id: current_user[:id], item_type: params[:type]).find_each do |favourite|
-      item = {:title =>favourite.item_title, :id => favourite.item_id}
-      puts item
-      @list.push(item)
+#    @list=[]
+    page = 1
+    if(params[:page])
+       page = params[:page].to_s.to_i
     end
+    @list = Favourite.where(user_id: current_user[:id], item_type: params[:type]).paginate(:page => page, :per_page => TURestFactory::PAGE_SIZE)
+        #.find_each do |favourite|
+      #item = {:title =>favourite.item_title, :id => favourite.item_id}
+      #puts item
+      #@list.push(item)
+    #end
+
+
 
     if(@type=="THESIS")
         @controller = 'thesis'

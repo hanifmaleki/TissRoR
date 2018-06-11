@@ -35,7 +35,7 @@
 </table>
 </div>
 <div style="margin-top:68px">
-<%= will_paginate  @list, :page_links=>true, :inner_window=>0, :outer_window=>0,
+<%= will_paginate  @list, :page_links=>true, :inner_window=>1, :outer_window=>0,
                    :next_label=>"<span aria-hidden=\"true\">&raquo;</span>
         <span class=\"sr-only\">Next</span>".html_safe,
                    :previous_label=>"<span aria-hidden=\"true\">&laquo;</span>
