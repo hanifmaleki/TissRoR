@@ -1,4 +1,5 @@
 class FavouriteController < ApplicationController
+  before_action :logged_in_user
 
   def add
     puts 'inside add'

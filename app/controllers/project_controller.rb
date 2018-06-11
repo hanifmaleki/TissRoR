@@ -1,4 +1,6 @@
 class ProjectController < ApplicationController
+  before_action :logged_in_user
+
   def search
   end
 

@@ -11,14 +11,14 @@
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-        <li class="active">
-          <%= link_to "About", static_pages_about_path %></li>
+        <li class="active">  <%= link_to "About", static_pages_about_path %></li>
+
+        <li> <a href="#">Settings(fake)</a></li>
+
+        <li><a href="#">Profile(Fake)</a></li><!--%= link_to "Profile", current_user %-->
+        <li><%= link_to "Contact us", static_pages_contact_path %></li>
         <li>
-          <a href="#">Settings</a></li>
-        <li>
-          <%= link_to "Contact us", static_pages_contact_path %></li>
-        <li>
-          <%= link_to "<span class=\"glyphicon glyphicon-log-out\"></span> Logout #{controller.current_user[:name]}".html_safe, static_pages_logout_path %>
+          <%= link_to "<span class=\"glyphicon glyphicon-log-out\"></span> Logout #{yield(:username)}".html_safe, logout_path, method: :delete %>
         </li>
       </ul>
     </div>

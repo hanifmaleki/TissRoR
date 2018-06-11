@@ -1,4 +1,5 @@
-<%= form_for(@user, url: static_pages_loggedin_path) do |f| %>
+<!--%= form_for(@users, url: static_pages_loggedin_path) do |f| %-->
+<%= form_for(:session, url: loggedin_path) do |f| %>
   <div class="form-group">
     <%= f.label(:username) %>
     <%= f.text_field :username, class: 'form-control', placeholder: "Enter username" %>
