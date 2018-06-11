@@ -1,10 +1,10 @@
 class EntityExtractor
-
-  def grtCourse(id)
+  include PersonHelper
+  def getCourse(id)
     tu_rest_factory = TURestFactory.new
     response = tu_rest_factory.getCourse(id)
     course = response.parsed_response["tuvienna"]["course"]
-    #puts course
+    puts "course is #{course} for id #{id}"
     hash = Hash.new
     hash[:id] = id
     hash[:courseNumber] = course["courseNumber"]
@@ -40,6 +40,7 @@ class EntityExtractor
     hash[:main_phone_number] = person["main_phone_number"]
     hash[:main_email] = person["main_email"]
     hash[:consultation_hour_info] = person["consultation_hour_info"]
+    hash[:title] = getFullTitle(person)
     hash
   end
 

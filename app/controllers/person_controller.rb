@@ -14,11 +14,7 @@ class PersonController < ApplicationController
     results = response["results"]
     @list = []
     results.each do |item|
-      pref = item["prefixTitle"] || ""
-      post = item["postfixTitle"] || ""
-      firstname = item["firstname"] || ""
-      lastname = item["lastname"] || ""
-      fullname = "#{pref} #{firstname} #{lastname} #{post}"
+      fullname = getFullTitle(person)
 
       person = {:title => fullname, :id => item["id"]}
       @list.push(person)

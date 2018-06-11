@@ -40,7 +40,7 @@ class CourseController < ApplicationController
     else
       puts "Not Empty"
       entity_extractor = EntityExtractor.new
-      @hash = entity_extractor.grtCourse(id)
+      @hash = entity_extractor.getCourse(id)
       @controller = controller_name
       @user = current_user
     end

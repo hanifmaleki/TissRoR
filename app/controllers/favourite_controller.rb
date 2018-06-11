@@ -1,3 +1,4 @@
+require 'will_paginate/array'
 class FavouriteController < ApplicationController
   before_action :logged_in_user
 
@@ -5,7 +6,7 @@ class FavouriteController < ApplicationController
     @favourite = Favourite.new
     @favourite.user_id = current_user[:id]
     @favourite.item_id = params[:id]
-    @favourite.item_title = params[:item_title]
+    @favourite.title = params[:title]
     @favourite.item_type = params[:type]
     @favourite.save
 
@@ -26,12 +27,23 @@ class FavouriteController < ApplicationController
 
   def show
     @type=params[:type]
-#    @list=[]
+    @list=[]
     page = 1
     if(params[:page])
        page = params[:page].to_s.to_i
     end
-    @list = Favourite.where(user_id: current_user[:id], item_type: params[:type]).paginate(:page => page, :per_page => TURestFactory::PAGE_SIZE)
+    results = Favourite.where(user_id: current_user[:id], item_type: params[:type]).paginate(:page => page, :per_page => TURestFactory::PAGE_SIZE)
+    puts "A", results.class, results.to_s
+    #@list = @list.map {|item| {:title => item.title, :id => item.item_id}}
+    #puts "B", @list.class
+
+    results.each do |item|
+      var = {:title => item.title, :id => item.item_id}
+      @list.push var
+    end
+    @list = @list.paginate(:page => page, :per_page => TURestFactory::PAGE_SIZE)
+
+
         #.find_each do |favourite|
       #item = {:title =>favourite.item_title, :id => favourite.item_id}
       #puts item
