@@ -6,7 +6,7 @@ class TURestFactory
   #https://tiss.tuwien.ac.at/api/person/v21/psuche
   #$countStr="&count=15"
   #todo move to project configurable settings
-  @@pageSize=15
+  PAGE_SIZE=15
 
   def search_people(expr)
     count = "&max_treffer=30"
@@ -56,7 +56,7 @@ class TURestFactory
   #@@instance = TURestFactory.new
   private
   def getPaginatoin(page)
-    "&count=#{@@pageSize}&offset=#{(page-1)*@@pageSize}&locale=en"
+    "&count=#{PAGE_SIZE}&offset=#{(page-1)*PAGE_SIZE}&locale=en"
   end
 
 

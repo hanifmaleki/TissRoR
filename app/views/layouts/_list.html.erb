@@ -3,7 +3,7 @@
 <div class="container"  style=" margin-top:48px;">
 <%puts yield(:favourite)%>
 <%if yield(:favourite)==""%>
-  <h5>Keyword is <%= yield(:keyword) %></h5>
+    <h4>Keyword is <b><%= yield(:keyword)%></b></h4>
 <%else%>
   <h5>Favourite <%=yield(:favourite)%></h5>
 <%end%>
@@ -27,23 +27,13 @@
         <td><%= link_to "Details", {:controller => @controller, :action => "detail", :id => item[:id]} %></td>
       </tr>
     <% end %>
+
     </tbody>
 <% else %>
   There is no item match with the search expression
 <% end %>
 </table>
+  <%= will_paginate  @list%>
 </div>
 
-<div class="container-fluid p-3 mb-2 bg-primary text-white navbar-fixed-bottom">
-  <ul class="pagination">
-    <li><a href="#">«</a></li>
-    <li><a href="#">1</a></li>
-    <li><a href="#">2</a></li>
-    <li class="disabled"><a href="#">3</a></li>
-    <li><a href="#">4</a></li>
-    <li><a href="#">5</a></li>
-    <li class="active"><a href="#">6</a></li>
-    <li><a href="#">»</a></li>
-  </ul>
-</div>
 <!--%= link_to "Back_to_search", url_for(action: "search", controller: @controller) %-->

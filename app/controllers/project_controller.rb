@@ -5,16 +5,28 @@ class ProjectController < ApplicationController
   end
 
   def list
+    @page_results = WillPaginate::Collection.create(current_page, per_page, @results.total_results) do |pager|
+      pager.replace(@posts.to_array)
+    end
+
     @expression = params[:expression]
     @controller = controller_name
+    page = 1
+    if(params[:page])
+      page = params[:page].to_s.to_i
+    end
     tu_rest_factory = TURestFactory.new
-    tu_rest_factory_search_people = tu_rest_factory.search_project(@expression)
+    tu_rest_factory_search_people = tu_rest_factory.search_project(@expression, page)
     response = JSON.parse tu_rest_factory_search_people.body
     results = response["results"]
     @list = []
     results.each do |result|
       item = {:title => result["title"], :id => result["id"]}
       @list.push(item)
+    end
+    total_results=response["total_results"]
+    @list = WillPaginate::Collection.create(page, TURestFactory::PAGE_SIZE, total_results) do |pager|
+      pager.replace(@list.to_a)
     end
   end
 

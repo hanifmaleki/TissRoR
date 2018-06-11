@@ -23,6 +23,10 @@ class PersonController < ApplicationController
       person = {:title => fullname, :id => item["id"]}
       @list.push(person)
     end
+
+    @list = WillPaginate::Collection.create(1, 30, 30) do |pager|
+      pager.replace(@list.to_a)
+    end
   end
 
   def detail
