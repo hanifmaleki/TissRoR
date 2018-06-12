@@ -29,29 +29,31 @@ April-May 2018 | Study Rails| 7 days
 2018-May-13   	| Define the repository, schedule and road map	|	1 day
 2018-May-14    | Prototyping(1) rest calling, routing, controllers | 2 Days
 2018-May-15    |Desing first version of data model     | 0.5 day
-2018-May-16 | Adding coresponding views 			| 0.5 Day
-	    | Adding project, thesis, and person search methods | 
-
+2018-May-16 | 1- Adding coresponding views 2- Adding project, thesis, and person search methods			| 0.5 Day
 2018-May-17 | Design of controllers and modes				| 1 Day
 2018-May-18 | Implementation of Application layouts			| 2 Days
 2018-May-20 | Implementing Models 					| 0.5 Day
 2018-May-20 | Constructing controllers					| 0.5 Day
 2018-Jun-05 | Working on Bootstrap for styling				| 2 Days
 2018-Jun-07 | Homepage implementation and Logo Desing			| 1 Day
-2018-Jun-08 | Implementation of Helper classes EntityExtractor 		| 1 Day
-	    | and TURestFactory						|
-2018-Jun-09 | Implementation of action bodies in controllers		| 1 Day
-	    | list, search, detail in 4 main controllers		|
-	    | and add and remove in favourtie controllers		| 
-2018-Jun-10 | Implementation of 4 detail views as well as 		| 1 Day
-	    | Completing all other views 
-2018-Jun-11 | Completing user management(signup- login - logout)	| 1 Day
+2018-Jun-08 | Implementation of Helper classes EntityExtractor and TURestFactory	 		| 1 Day
+2018-Jun-09 | Implementation of action bodies in controllers consisting of *list*, *search*, and *detail* in 4 main controllers and *add* and *remove* in **favourtie** controllers		| 1 Day
+2018-Jun-10 | Implementation of 4 detail views as well as completing all other views		| 1 Day
+2018-Jun-11 | Completing user management(signup- login - logout)	| 1 Day 
 2018-Jun-12 | Adding pagination						| 0.5 Day
 2018-Jun-12 | Bug fixing, deplyment on Herku site			| 0.5 Day
 
+
 ### Study Ruby and Ruby on Rails
+For starting with ruby a fast toturial [*Ruby Tutorial*](https://www.tutorialspoint.com/ruby/index.htm) is choose .
+A nice online toturial is read for the course and project which is called [*Ruby on Rails Tutorial Learn Web Development with Rails*](https://www.railstutorial.org/book) by **Michael Hartl**. In addition to the basic RoR requirements, it covers many advanced topic of front-end development.
+
 ### Prototyping
-In order to have better idea about designing the project and due to the fact that the author does not have much experience in *RoR*, a prototyping is being done and deployed in [*heroku* cloud platform](https://hanifprototype1.herokuapp.com/)
+In order to have better idea about designing the project and due to the fact that the author does not have much experience in *RoR*, a prototyping is being done.
+
+### Online Deployment
+In order to test the tool with mobile devices, a constant deployment has been done on the [*heroku* cloud platform](https://tissror.herokuapp.com/)
+
 ### Data Model
 The data model is available in [dataModel.MD](https://github.com/hanifmaleki/TissRoR/blob/master/DesignAndScheduling/schedule.MD)
 
@@ -106,3 +108,10 @@ The application basically use two king of layouts. The **welcome**-layout for lo
 ### List of Controllers, Actions and Controller Helpers
 There exist exactly one action for each view in the above list. Furthermore two helper class for calling **Restful web services** and extracting models(person, course, project, thesis) from XML file. Theses classes are called **TRRestFactory** and **EntityExtractor**.
 
+### Future work
+The following are possible extensions to current version:
+0. Activating Setting menu and user edit menu
+1. Asynchronous server communication (Ajax technology)
+2. Enable user email activation and reset password capability
+3. Client-side caching
+4. Server-side caching
