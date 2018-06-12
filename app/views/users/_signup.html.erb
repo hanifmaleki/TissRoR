@@ -1,8 +1,8 @@
 <% puts @user.errors.full_messages.length %>
 
-<%= form_for(@user, url: static_pages_create_path) do |f| %>
+<%= form_for(@user, url: create_path) do |f| %>
 
-  <%= render 'static_pages/error_messages' %>
+  <%= render 'users/error_messages' %>
 
   <%= f.label :name %>
   <%= f.text_field :name, class: 'form-control' %>

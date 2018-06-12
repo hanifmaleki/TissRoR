@@ -24,7 +24,8 @@ Rails.application.routes.draw do
   #get 'static_pages/logout'
   root 'static_pages#home'
 
-  get    '/signup',  to: 'users#new'
+  get    '/signup',  to: 'users#signup'
+  post '/create', to: 'users#create'
   get    '/login',   to: 'sessions#login'
   post   '/loggedin',   to: 'sessions#loggedin'
   delete '/logout',  to: 'sessions#logout'
