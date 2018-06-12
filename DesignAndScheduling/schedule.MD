@@ -103,14 +103,17 @@ The most important view is home view. Here its design is shown
 3. Favourite people
 4. Favourite projects
 
+![The list layout for favourites and search results ](UI/list.jpeg)
+
 #### User
 1. sign-up
 2. (edit user)
 
-![](UI/login.jpeg)
+![](UI/signup.jpeg)
 
 #### Session
 1. login
+2. logout (only action)
 
 ![](UI/login.jpeg)
 
@@ -121,13 +124,19 @@ The application basically use two king of layouts. The **welcome**-layout for lo
 3. footer: consist of paging that is used in favorite and list pages.
 4. detail-nav-bar: the navigation bar sepecific for detail pages consisting of add to/remove from favourite button.
 
+![The above layouts is shown in this figure](UI/layouts.jpeg)
+
+![The header layout with expanded menu bar](UI/menu.jpeg)
+
+![The search layout](UI/search.jpeg)
+
 ### List of Controllers, Actions and Controller Helpers
 There exist exactly one action for each view in the above list. Furthermore two helper class for calling **Restful web services** and extracting models(person, course, project, thesis) from XML file. Theses classes are called **TRRestFactory** and **EntityExtractor**.
 
 ### Future work
 The following are possible extensions to current version:
-0. Activating Setting menu and user edit menu
-1. Asynchronous server communication (Ajax technology)
-2. Enable user email activation and reset password capability
-3. Client-side caching
-4. Server-side caching
+1. Activating Setting menu and user edit menu
+2. Asynchronous server communication (Ajax technology)
+3. Enable user email activation and reset password capability
+4. Client-side caching
+5. Server-side caching
