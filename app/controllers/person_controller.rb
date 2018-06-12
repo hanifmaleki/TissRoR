@@ -1,4 +1,5 @@
 require 'json'
+include PersonHelper
 class PersonController < ApplicationController
   before_action :logged_in_user
 
@@ -14,7 +15,7 @@ class PersonController < ApplicationController
     results = response["results"]
     @list = []
     results.each do |item|
-      fullname = getFullTitle(person)
+      fullname = getFullTitle(item)
 
       person = {:title => fullname, :id => item["id"]}
       @list.push(person)

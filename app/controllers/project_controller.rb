@@ -5,10 +5,6 @@ class ProjectController < ApplicationController
   end
 
   def list
-    @page_results = WillPaginate::Collection.create(current_page, per_page, @results.total_results) do |pager|
-      pager.replace(@posts.to_array)
-    end
-
     @expression = params[:expression]
     @controller = controller_name
     page = 1
