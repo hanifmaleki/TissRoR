@@ -1,0 +1,20 @@
+1-rails generate model User username:string name:string password:string email:string
+
+2-rails generate model Course courseNumber:string  semesterCode:string  courseType:string  title:string  objective:string  teachingContent:string  lectureNotes:string  examinationModalities:string  recommendation:string  precedingCourses:integer  weeklyHours:string  lecturers:string  instituteCode:string  instituteName:string  registration:string  language:string 
+
+
+3-rails generate model Project title:string contractBegin:string contractEnd:string projectBegin:string projectEnd:string projectFrom:string projectType:string abstract:string researchArea:string institute:string keywords:string financier:string funding:string
+
+
+4-rails generate model Thesis type:string title:string Institute:string InstituteName:string facultyCode:string keywords:string language:string advisor:string facultyName:string
+
+
+5-rails generate model Person firstname:string lastname:string gender:string preceding_titles:string picture_uri:string main_phone_number:string main_email:string consultation_hour_info:string title:string
+
+6-rails generate model Favourite user_id:integer item_id:string title:string item_type:string
+
+
+
+
+
+
