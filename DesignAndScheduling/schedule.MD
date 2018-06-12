@@ -61,29 +61,41 @@ The data model is available in [dataModel.MD](https://github.com/hanifmaleki/Tis
 The following is the list of views. (TODO: list of mock images):
 
 #### Static-Page
+Static-Page controller contains following views/actions:
 1. home
 2. about
 3. contact
+
+The most important view is home view. Here its design is shown
+![](UI/home.jpeg)
 
 #### Project
 1. search
 2. list
 3. detai
 
+![](UI/project.jpeg)
+
 #### Thesis
 1. search
 2. list
 3. detai
+
+![](UI/thesis.jpeg)
 
 #### Course
 1. search
 2. list
 3. detai
 
+![](UI/course.jpeg)
+
 #### Person
 1. search
 2. list
 3. detai
+
+![](UI/person.jpeg)
 
 #### Favourites
 1. Favourite theses
@@ -95,8 +107,12 @@ The following is the list of views. (TODO: list of mock images):
 1. sign-up
 2. (edit user)
 
+![](UI/login.jpeg)
+
 #### Session
 1. login
+
+![](UI/login.jpeg)
 
 ### Layouts
 The application basically use two king of layouts. The **welcome**-layout for login and sign-up pages and **'application'**-layout for other pages. The welcome layer consist of the logo. The following layouts are necessary for the application-layout
