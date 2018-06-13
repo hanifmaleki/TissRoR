@@ -11,15 +11,16 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      redirect_to action: 'login'
+      redirect_to login_path
     else
       render 'signup'
     end
+
   end
 
   private
   def user_params
-    params.require(:users).permit(:name, :email, :password, :username, :password_confirmation)
+    params.require(:user).permit(:name, :email, :password, :username, :password_confirmation)
   end
 
 
