@@ -3,7 +3,6 @@ $(document).ajaxSuccess(function(data) {
     var myVar = "<%= escape_javascript("#{link_to image_tag("add2.png", size:"36x36"),
                         {:controller => 'favourite', :action => "add", :type => @type,
                          :id => @id, :title => @title}, :remote =>true}".html_safe)%>";
-    alert(id);
 
     $(id).html(myVar);
 });

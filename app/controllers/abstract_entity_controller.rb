@@ -9,7 +9,6 @@ class AbstractEntityController < ApplicationController
 
   def list
     @search_request = SearchRequest.new(search_params)
-    puts 'params is', @search_request.valid?
     if @search_request.valid?
       @expression = params[:search_request][:expression]
       @controller = controller_name
@@ -19,6 +18,7 @@ class AbstractEntityController < ApplicationController
       end
       @page_size = TURestFactory::PAGE_SIZE
       total_results = make_list(page)
+      puts 'params is', total_results
       @list.map! {|item|
         favourite_find_by = Favourite.find_by(user_id: current_user[:id], item_id: item[:id])
         element =  {:title => item[:title], :id => item[:id], :isFavourite=> !(favourite_find_by.nil?)}

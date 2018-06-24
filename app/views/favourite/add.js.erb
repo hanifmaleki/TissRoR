@@ -8,8 +8,6 @@ $(document).ajaxSuccess(function(data) {
     var id = <%= "\"#fav-#{@id}\"".html_safe %> + "" ;
     var myVar = "<%= escape_javascript("#{link_to image_tag("remove2.png", size:"36x36"), {:controller => 'favourite', :action => "remove", :type => @type,
                          :id => @id, :title => @title}, :remote =>true}".html_safe)%>";
-    alert(id);
-
     $(id).html(myVar);
 });
 //alert("Zahre mar")

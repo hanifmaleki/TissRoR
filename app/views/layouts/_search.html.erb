@@ -6,7 +6,7 @@
     <!--%= text_field_tag :expression, '', class:'form-control' %-->
   <%= render 'layouts/error_messages' %>
 
-  <%=form_for(@search_request, url: yield(:forwardPath)) do |f|%>
+  <%=form_for(@search_request, url: yield(:forwardPath), method: :get) do |f|%>
     <div class="form-group">
       <%= f.label :expression %>
       <%= f.text_field :expression, class: 'form-control' %>
