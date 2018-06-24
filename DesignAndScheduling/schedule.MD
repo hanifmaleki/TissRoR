@@ -62,7 +62,7 @@ In order to test the tool with mobile devices, a constant deployment has been do
 The data model is available in [dataModel.MD](https://github.com/hanifmaleki/TissRoR/blob/master/DesignAndScheduling/schedule.MD)
 
 ### List of Views
-The following is the list of views. (TODO: list of mock images):
+The following is the list of views. 
 
 #### Static-Page
 Static-Page controller contains following views/actions:
@@ -136,6 +136,7 @@ The application basically use two king of layouts. The **welcome**-layout for lo
 
 ### List of Controllers, Actions and Controller Helpers
 There exist exactly one action for each view in the above list. Furthermore two helper class for calling **Restful web services** and extracting models(person, course, project, thesis) from XML file. Theses classes are called **TRRestFactory** and **EntityExtractor**.
+
 Since all of the four main controllers(ProjectController, CourseControllr, ThesisController, and PersonController) has three activity _search_, _list_, and _detail_ in comon, such main functionalities is done in a common class **AbstractEntityController class** and the remaining specific parts are done in each controller.
 
 ### Asynchronous server communication (Ajax technology)
