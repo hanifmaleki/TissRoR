@@ -5,24 +5,27 @@ Since most of the fields are *String*, the fields are assumed to be string unles
 ## Course
 This model maintain the course information
 
-| Field |
-|-------|
-| courseNumber |
-| semesterCode |
-| courseType   |
-| title |
-| objective |
-| trachingContent |
-| lectureNotes |
-| examinationModalities |
-| recommendation |
-| precedingCourses(!) |
-| weeklyHours |
-| lecturers |
-| instituteCode |
-| instituteName |
-| registration |
-| language |
+| Field |Type |
+|-------|-------|
+| id | integer |
+| courseNumber | string |
+| semesterCode | string |
+| courseType   | string |
+| title | string |
+| objective | string |
+| trachingContent | string |
+| lectureNotes | string |
+| examinationModalities | string |
+| recommendation | string |
+| precedingCourses | string |
+| weeklyHours | string |
+| lecturers | string |
+| instituteCode | string |
+| instituteName | string |
+| registration | string |
+| language | string |
+| created_at | datetime |
+| updated_at | datetime |
 
 The corresponding rails command for this model is 
 ```
@@ -103,6 +106,7 @@ rails generate model Project title:string contractBegin:string contractEnd:strin
 ```
 ## Favourite
 This model the id and title of the favourite items as well as their types.
+
 | Field | Type |
 |-------|------|
 | id | integer |
@@ -111,6 +115,7 @@ This model the id and title of the favourite items as well as their types.
 |type |string |
 | created_at | datetime |
 | updated_at | datetime |
+
 It is worse considering that _item´_id_ is of type string. This is due the fact that identifier field in _Course_ model is of type string.
 
 ```
@@ -139,15 +144,15 @@ rails generate model User username:string name:string password:string email:stri
 
 ## SearchRequest
 Every user search request is captured and validate by this model
+
 | Field | Type | Validation |
 |-------|-------|-----------|
 | id | integer | |
 | expression | string | presence, 3<=length <=30 |
-|type | string | |
+| type | string | |
 | created_at | datetime | |
 | updated_at | datetime | |
 ```
 rails generate model SearchRequest expression:string type:string
-```
 ```
 
