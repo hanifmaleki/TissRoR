@@ -33,16 +33,19 @@ rails generate model Course courseNumber:string semesterCode:string courseType:s
 ## Person
 *Person* model represents the information of person.
 
-| Field |
-|-------|
-| firstname |
-| lastname |
-| gender  |
-| preceding_titles |
-| picture_uri |
-| main_phone_number |
-| main_email |
-| consultation_hour_info |
+| Field | Type |
+|-------|-------|
+| id | integer |
+| firstname | string |
+| lastname | string |
+| gender  | string |
+| preceding_titles | string |
+| picture_uri | string |
+| main_phone_number | string |
+| main_email | string |
+| consultation_hour_info | string |
+| created_at | datetime |
+| updated_at | datetime |
 
 The corresponding rails command for this model is 
 ```
@@ -52,17 +55,20 @@ rails generate model Person firstname:string lastname:string gender:string prece
 ## Thesis
 This model aim to maintain information about thesis.
 
-| Field |
-|-------|
-| type |
-| title |
-| institue(!) |
-| institueName(!) |
-| facultyCode |
-| keywords |
-| language |
-| advisor(prefix +  name + family + postfix) |
-| facultyName |
+| Field | Type |
+|-------|------|
+| id | integer |
+| type | string |
+| title | string |
+| institue | string |
+| institueName | string |
+| facultyCode | string |
+| keywords | string |
+| language | string |
+| advisor(prefix +  name + family + postfix) | string |
+| facultyName | string |
+| created_at | datetime |
+| updated_at | datetime |
 
 The corresponding rails command for this model is 
 ```
@@ -72,22 +78,24 @@ rails generate model Thesis type:string title:string Institute:string InstituteN
 ## Projects
 *Project* specifications are represented by this model.
 
-| Field |
-|-------|
-| id |
-| title |
-| contractBegin |
-| contractEnd |
-| projectBegin |
-| projectEnd |
-| projectFrom |
-| projectType |
-| abstract |
-| researchArea |
-| institue |
-| keywords |
-| financier |
-| funding |
+| Field | Type |
+|-------|-------|
+| id | integer |
+| title | string |
+| contractBegin | string |
+| contractEnd | string |
+| projectBegin | string |
+| projectEnd | string |
+| projectFrom | string |
+| projectType | string |
+| abstract | string |
+| researchArea | string |
+| institue | string |
+| keywords | string |
+| financier | string |
+| funding | string |
+| created_at | datetime |
+| updated_at | datetime |
 
 The corresponding rails command for this model is 
 ```
@@ -95,12 +103,15 @@ rails generate model Project title:string contractBegin:string contractEnd:strin
 ```
 ## Favourite
 This model the id and title of the favourite items as well as their types.
-| Field |
-|-------|
-| id |
-| title |
-| item_id |
-|type |
+| Field | Type |
+|-------|------|
+| id | integer |
+| title |string |
+| item_id |string |
+|type |string |
+| created_at | datetime |
+| updated_at | datetime |
+It is worse considering that _item´_id_ is of type string. This is due the fact that identifier field in _Course_ model is of type string.
 
 ```
 rails generate model Favourite user_id:integer item_id:string title:string item_type:string
@@ -110,15 +121,33 @@ rails generate model Favourite user_id:integer item_id:string title:string item_
 ## User
 Registered user information are maintained by *User* data model.
 
-| Field |
-|-------|
-| id |
-| username |
-|name |
-|family |
-|email |
+| Field | Type | Validation |
+|-------|-------|--------|
+| id | integer |
+| username | string | presence, 6<=length<=50 |
+|name | string | presence, 6<=length<=50 |
+|family | string | |
+|email | string | presence, email format |
+|password | string | password_digest |
+| created_at | datetime | |
+| updated_at | datetime | |
 
 The corresponding rails command for this model is 
 ```
 rails generate model User username:string name:string password:string email:string
 ```
+
+## SearchRequest
+Every user search request is captured and validate by this model
+| Field | Type | Validation |
+|-------|-------|-----------|
+| id | integer | |
+| expression | string | presence, 3<=length <=30 |
+|type | string | |
+| created_at | datetime | |
+| updated_at | datetime | |
+```
+rails generate model SearchRequest expression:string type:string
+```
+```
+

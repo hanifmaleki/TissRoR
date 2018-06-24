@@ -42,7 +42,11 @@ April-May 2018 | Study Rails| 7 days
 2018-Jun-11 | Completing user management(signup- login - logout)	| 1 Day 
 2018-Jun-12 | Adding pagination						| 0.5 Day
 2018-Jun-12 | Bug fixing, deplyment on Herku site			| 0.5 Day
-
+2018-Jun-22 | Negotiation with product owner, Add model validation of the length of the search expression, Add corresponding error shower to the search view | 1 Day
+2018-Jun-23 | Add AbstractController (parent of 4 main controllers) and make the hierarchical structure, Adding DataTable support(bootstrap & jquery) and add sorting to the lists | 1 Day
+2018-Jun-24 | Adding add/remove to/from favourites possibility to the lists, Adding ajax support to the add/remove to/from favourites operations in list | 1 Day
+2018-Jun-25 | Bug fixing | 1 Day
+2018-Jun-26 | Deliver project through final meeting | 1 Day
 
 ### Study Ruby and Ruby on Rails
 For starting with ruby a fast toturial [*Ruby Tutorial*](https://www.tutorialspoint.com/ruby/index.htm) is choose .
@@ -132,11 +136,14 @@ The application basically use two king of layouts. The **welcome**-layout for lo
 
 ### List of Controllers, Actions and Controller Helpers
 There exist exactly one action for each view in the above list. Furthermore two helper class for calling **Restful web services** and extracting models(person, course, project, thesis) from XML file. Theses classes are called **TRRestFactory** and **EntityExtractor**.
+Since all of the four main controllers(ProjectController, CourseControllr, ThesisController, and PersonController) has three activity _search_, _list_, and _detail_ in comon, such main functionalities is done in a common class **AbstractEntityController class** and the remaining specific parts are done in each controller.
+
+### Asynchronous server communication (Ajax technology)
+In the final stages of the project, the Ajax technoly is used in order to support asynchronous server call and partial view parts modification. In particular, it is used in the lists in order to prevent loading the whole page when user add/remove an item to/from the favourites.
 
 ### Future work
 The following are possible extensions to current version:
 1. Activating Setting menu and user edit menu
-2. Asynchronous server communication (Ajax technology)
-3. Enable user email activation and reset password capability
-4. Client-side caching
-5. Server-side caching
+2. Enable user email activation and reset password capability
+3. Client-side caching
+4. Server-side caching
