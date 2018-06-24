@@ -1,10 +1,15 @@
 <%=render 'layouts/simple_second_nav' %>
 
 <div class="container" style="padding-top:84px;">
-  <%= form_tag(yield(:forwardPath), method: :get) do %>
+  <!--%= form_tag(yield(:forwardPath), method: :get) do %-->
+    <!--%= label_tag(:expression, "Search for:") %-->
+    <!--%= text_field_tag :expression, '', class:'form-control' %-->
+  <%= render 'layouts/error_messages' %>
+
+  <%=form_for(@search_request, url: yield(:forwardPath)) do |f|%>
     <div class="form-group">
-      <%= label_tag(:expression, "Search for:") %>
-      <%= text_field_tag :expression, '', class:'form-control' %>
+      <%= f.label :expression %>
+      <%= f.text_field :expression, class: 'form-control' %>
     </div>
     <%= submit_tag "Search", class: "btn btn-primary btn-md" %>
   <% end %>

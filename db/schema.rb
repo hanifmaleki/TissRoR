@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_11_174847) do
+ActiveRecord::Schema.define(version: 2018_06_22_171812) do
 
   create_table "courses", force: :cascade do |t|
     t.string "courseNumber"
@@ -70,6 +70,13 @@ ActiveRecord::Schema.define(version: 2018_06_11_174847) do
     t.string "keywords"
     t.string "financier"
     t.string "funding"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "search_requests", force: :cascade do |t|
+    t.string "expression"
+    t.string "type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

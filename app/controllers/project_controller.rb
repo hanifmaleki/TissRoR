@@ -1,16 +1,14 @@
-class ProjectController < ApplicationController
+class ProjectController < AbstractEntityController
   before_action :logged_in_user
 
-  def search
+  private
+
+  def get_details(id)
+    entity_extractor = EntityExtractor.new
+    entity_extractor.getProject(id)
   end
 
-  def list
-    @expression = params[:expression]
-    @controller = controller_name
-    page = 1
-    if(params[:page])
-      page = params[:page].to_s.to_i
-    end
+  def make_list(page)
     tu_rest_factory = TURestFactory.new
     tu_rest_factory_search_people = tu_rest_factory.search_project(@expression, page)
     response = JSON.parse tu_rest_factory_search_people.body
@@ -20,23 +18,6 @@ class ProjectController < ApplicationController
       item = {:title => result["title"], :id => result["id"]}
       @list.push(item)
     end
-    total_results=response["total_results"]
-    @list = WillPaginate::Collection.create(page, TURestFactory::PAGE_SIZE, total_results) do |pager|
-      pager.replace(@list.to_a)
-    end
-  end
-
-  def detail
-    id = params[:id]
-    if (id.nil?)
-      puts "EMpty"
-      #TODO fill it
-    else
-      puts "Not Empty"
-      entity_extractor = EntityExtractor.new
-      @hash = entity_extractor.getProject(id)
-      @controller = controller_name
-      @user = current_user
-    end
+    response["total_results"]
   end
 end

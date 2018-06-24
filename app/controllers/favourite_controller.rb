@@ -3,6 +3,7 @@ class FavouriteController < ApplicationController
   before_action :logged_in_user
 
   def add
+    puts "ma injayim"
     @favourite = Favourite.new
     @favourite.user_id = current_user[:id]
     @favourite.item_id = params[:id]
@@ -10,18 +11,26 @@ class FavouriteController < ApplicationController
     @favourite.item_type = params[:type]
     @favourite.save
 
+    @id = params[:id]
+    @type = params[:type]
+    @title = params[:title]
     respond_to do |format|
+      #format.html { redirect_back  fallback_location: @post}
+      puts "ma injayim-2 #{format.to_s}"
       format.html { redirect_back  fallback_location: @post}
-      format.js
+      format.js { }
     end
   end
 
   def remove
     @favourite = Favourite.find_by(user_id: current_user[:id], item_id: params[:id])
     @favourite.destroy
+    @id = params[:id]
+    @type = params[:type]
+    @title = params[:title]
     respond_to do |format|
       format.html { redirect_back  fallback_location: @post}
-      format.js
+      format.js { }
     end
   end
 
@@ -33,12 +42,12 @@ class FavouriteController < ApplicationController
        page = params[:page].to_s.to_i
     end
     results = Favourite.where(user_id: current_user[:id], item_type: params[:type]).paginate(:page => page, :per_page => TURestFactory::PAGE_SIZE)
-    puts "A", results.class, results.to_s
+    #puts "A", results.class, results.to_s
     #@list = @list.map {|item| {:title => item.title, :id => item.item_id}}
     #puts "B", @list.class
 
     results.each do |item|
-      var = {:title => item.title, :id => item.item_id}
+      var = {:title => item.title, :id => item.item_id, :date=>item.created_at, :isFavourite=>true}
       @list.push var
     end
     @list = @list.paginate(:page => page, :per_page => TURestFactory::PAGE_SIZE)

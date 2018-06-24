@@ -7,9 +7,10 @@ class TURestFactory
   #$countStr="&count=15"
   #todo move to project configurable settings
   PAGE_SIZE=15
+  PERSON_RESULT_COUNT=30
 
   def search_people(expr)
-    count = "&max_treffer=30"
+    count = "&max_treffer=#{PERSON_RESULT_COUNT}"
     string = "/person/v21/psuche?q=#{expr}#{count}"
     puts string
     self.class.get(string)
