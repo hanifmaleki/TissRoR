@@ -16,11 +16,11 @@
         });
     });
 </script>
-<% provide :title, "Search Results" %>
+<% provide :title, "#{@type.capitalize} Favourites" %>
 <%= render 'layouts/simple_second_nav' %>
-<div class="container" style=" margin-top:48px;" xmlns:style="http://www.w3.org/1999/xhtml">
-    <h5>Favourite <%= yield(:favourite) %></h5>
-</div>
+<!--div class="container" style=" margin-top:48px;" xmlns:style="http://www.w3.org/1999/xhtml">
+    <h5>Favourite <!--%= yield(:favourite) %--><!--/h5>
+</div-->
 
 <div class="container">
   <% if @list && @list.length > 0 %>

@@ -45,12 +45,12 @@ class FavouriteController < ApplicationController
        page = params[:page].to_s.to_i
     end
     results = Favourite.where(user_id: current_user[:id], item_type: params[:type]).paginate(:page => page, :per_page => TURestFactory::PAGE_SIZE)
-    puts "A", results.class, results.to_s
+    #puts "A", results.class, results.to_s
     #@list = @list.map {|item| {:title => item.title, :id => item.item_id}}
     #puts "B", @list.class
 
     results.each do |item|
-      var = {:title => item.title, :id => item.item_id}
+      var = {:title => item.title, :id => item.item_id, :date=> item.created_at}
       @list.push var
     end
     @list = @list.paginate(:page => page, :per_page => TURestFactory::PAGE_SIZE)
