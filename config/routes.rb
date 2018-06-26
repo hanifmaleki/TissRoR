@@ -33,7 +33,7 @@ Rails.application.routes.draw do
   #get '/person/doInvoke', to: 'person#doInvoke'
   get '/person/list'
   get 'person/detail'
-
+  get 'course/profFind'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
 end

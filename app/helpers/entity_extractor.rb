@@ -4,7 +4,7 @@ class EntityExtractor
     tu_rest_factory = TURestFactory.new
     response = tu_rest_factory.getCourse(id)
     course = response.parsed_response["tuvienna"]["course"]
-    puts "course is #{course} for id #{id}"
+    #puts "course is #{course} for id #{id}"
     hash = Hash.new
     hash[:id] = id
     hash[:courseNumber] = course["courseNumber"]

@@ -1,5 +1,56 @@
-<%provide(:favourite, @type)%>
-<% puts "type is #{@type}" %>
-<%provide(:list, @list)%>s
+<!--%provide(:favourite, @type)%-->
+<!--% puts "type is #{@type}" %-->
+<!--%provide(:list, @list)%-->
 
-<%= render 'layouts/list'%>
+<!--%= render 'layouts/list'%-->
+
+<script>
+    $(document).ready(function () {
+        $('#listTable').DataTable({
+            "paging": true, "info": true/*, "searching":false*/,
+            "aoColumns": [
+                null,
+                null,
+                {"bSortable": false}
+            ]
+        });
+    });
+</script>
+<% provide :title, "Search Results" %>
+<%= render 'layouts/simple_second_nav' %>
+<div class="container" style=" margin-top:48px;" xmlns:style="http://www.w3.org/1999/xhtml">
+    <h5>Favourite <%= yield(:favourite) %></h5>
+</div>
+
+<div class="container">
+  <% if @list && @list.length > 0 %>
+    <table id="listTable" class="table table-condensed table-hover table-striped">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Date</th>
+        <th>Favourites</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @list.each do |item| %>
+        <tr id=<%= "\"fav-#{item[:id]}\"".html_safe %>>
+          <td><%= link_to item[:title], {:controller => @controller, :action => "detail", :id => item[:id]} %></td>
+          <td>
+              <%= item[:date] %>
+          </td>
+          <td>
+              <%= link_to "#{image_tag("remove2.png", size: "36x36")}".html_safe,
+                          {:controller => 'favourite', :action => "remove", :type => yield(:type),
+                           :id => item[:id], :title => item[:title], :isFavourite=>true}, :remote => true %>
+          </td>
+        </tr>
+      <% end %>
+
+      </tbody>
+  <% else %>
+    There is no item match with the search expression
+  <% end %>
+  </table>
+</div>
+

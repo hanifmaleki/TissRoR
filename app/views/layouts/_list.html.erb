@@ -1,17 +1,10 @@
 <script>
     $(document).ready(function () {
         $('#listTable').DataTable({
-            "paging": false, "info": false/*, "searching":false*/,
+            "paging": false, "info": false, "searching":false,
             "aoColumns": [
                 null,
-                null,
-                <%if yield(:favourite)==""%>
-                null
-                <%else%>
                 {"bSortable": false}
-
-                <%end%>
-
             ]
         });
     });
@@ -19,13 +12,7 @@
 <% provide :title, "Search Results" %>
 <%= render 'layouts/simple_second_nav' %>
 <div class="container" style=" margin-top:48px;" xmlns:style="http://www.w3.org/1999/xhtml">
-  <% visib = "none" %>
-  <% if yield(:favourite) == "" %>
     <h4>Keyword is <b><%= yield(:keyword) %></b></h4>
-  <% else %>
-    <h5>Favourite <%= yield(:favourite) %></h5>
-    <% visib = "" %>
-  <% end %>
 </div>
 
 <div class="container">
@@ -34,7 +21,6 @@
       <thead>
       <tr>
         <th>Name</th>
-        <th style="display:<%=visib%>;">Date</th>
         <th>Favourites</th>
       </tr>
       </thead>
@@ -42,12 +28,6 @@
       <% @list.each do |item| %>
         <tr>
           <td><%= link_to item[:title], {:controller => @controller, :action => "detail", :id => item[:id]} %></td>
-          <td style="display:<%=visib%>;">
-            <% if yield(:favourite) == "" %>
-              ---
-            <% else %>
-              <%= item[:date] %>
-            <% end %>
           </td>
           <td id=<%= "\"fav-#{item[:id]}\"".html_safe %>>
             <% if !item[:isFavourite] %>
@@ -57,7 +37,7 @@
             <% else %>
               <%= link_to "#{image_tag("remove2.png", size: "36x36")}".html_safe,
                           {:controller => 'favourite', :action => "remove", :type => yield(:type),
-                           :id => item[:id], :title => item[:title]}, :remote => true %>
+                           :id => item[:id], :title => item[:title], :isFavourite=>false}, :remote => true %>
             <% end %>
           </td>
         </tr>

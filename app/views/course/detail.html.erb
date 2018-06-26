@@ -32,7 +32,13 @@
   <dd><%= @hash[:weeklyHours].to_s.html_safe %></dd>
 
   <dt>Lecturers:</dt>
-  <dd><%= @hash[:lecturers].to_s.html_safe %></dd>
+  <%professors= @hash[:lecturers]["oid"]%>
+  <% counter = 0 %>
+  <%professors.each do |prof|%>
+    <% counter = counter +1%>
+    <dd id="prof-<%= "#{counter}"%>"><%= prof.html_safe %></dd>
+    <!--%post 'course/profFind'%-->
+  <%end%>
 
   <dt>Institue:</dt>
   <dd><%= "#{@hash[:institue].to_s.html_safe} #{@hash[:institueName].to_s.html_safe}" %></dd>

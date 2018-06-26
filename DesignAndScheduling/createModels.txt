@@ -13,6 +13,8 @@
 
 6-rails generate model Favourite user_id:integer item_id:string title:string item_type:string
 
+7-  rails generate model SearchRequest expression:string type:string
+
 
 
 
