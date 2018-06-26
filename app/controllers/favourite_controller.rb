@@ -53,7 +53,7 @@ class FavouriteController < ApplicationController
       var = {:title => item.title, :id => item.item_id, :date=> item.created_at}
       @list.push var
     end
-    @list = @list.paginate(:page => page, :per_page => TURestFactory::PAGE_SIZE)
+    #@list = @list.paginate(:page => page, :per_page => TURestFactory::PAGE_SIZE)
 
 
         #.find_each do |favourite|
